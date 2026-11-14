@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pensieve Archives • Lumos &amp; Prophecy Lamp</title>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231a0b0b'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle'%3E%E2%9C%A8%3C/text%3E%3C/svg%3E" rel="icon"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: EB Garamond, Playfair Display, Caveat, Cinzel -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&amp;family=Cinzel:wght@600;700;800;900&amp;family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Playfair+Display:ital,wght@0,500..900;1,500..900&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Target Theme Configuration -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error": "#690005",
+            "surface": "#1c110f",
+            "inverse-on-surface": "#3b2d2b",
+            "tertiary-container": "#bbb39a",
+            "surface-container-lowest": "#160b0a",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary-fixed": "#1f1c0b",
+            "secondary-fixed": "#ffdad5",
+            "surface-container-highest": "#40312f",
+            "on-primary-fixed-variant": "#574500",
+            "on-secondary-fixed-variant": "#8d160e",
+            "surface-dim": "#1c110f",
+            "surface-container-high": "#342724",
+            "on-tertiary-fixed-variant": "#4c4733",
+            "inverse-primary": "#735c00",
+            "on-surface": "#f4ddd9",
+            "on-tertiary": "#35301e",
+            "secondary-fixed-dim": "#ffb4a9",
+            "on-primary": "#3c2f00",
+            "on-background": "#f4ddd9",
+            "error-container": "#93000a",
+            "on-error-container": "#ffdad6",
+            "secondary": "#ffb4a9",
+            "outline": "#99907c",
+            "background": "#1c110f",
+            "secondary-container": "#740001",
+            "surface-variant": "#40312f",
+            "surface-container": "#291d1a",
+            "on-primary-container": "#554300",
+            "on-secondary": "#690001",
+            "tertiary-fixed-dim": "#cec6ad",
+            "inverse-surface": "#f4ddd9",
+            "primary-fixed": "#ffe088",
+            "on-secondary-container": "#ffd9d5",
+            "error": "#ffb4ab",
+            "on-surface-variant": "#d0c5af",
+            "surface-tint": "#e9c349",
+            "tertiary": "#d7ceb4",
+            "primary-container": "#d4af37",
+            "primary": "#f2ca50",
+            "primary-fixed-dim": "#e9c349",
+            "tertiary-fixed": "#ebe2c8",
+            "outline-variant": "#4d4635",
+            "on-tertiary-container": "#4a4532",
+            "on-primary-fixed": "#241a00",
+            "surface-container-low": "#251916",
+            "surface-bright": "#443633"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Playfair Display", "serif"],
+            "headline-md": ["Playfair Display", "serif"],
+            "headline-sm": ["Playfair Display", "serif"],
+            "body-lg": ["EB Garamond", "serif"],
+            "body-md": ["EB Garamond", "serif"],
+            "body-sm": ["EB Garamond", "serif"],
+            "cinzel": ["Cinzel", "serif"],
+            "handwriting": ["Caveat", "cursive"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+
+    /* Magical Atmospheric Keyframes */
+    @keyframes orbFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+      50% { transform: translateY(-10px) rotate(180deg) scale(1.02); }
+    }
+    @keyframes ringPulse {
+      0%, 100% { opacity: 0.45; transform: rotate(0deg) scale(1); }
+      50% { opacity: 0.85; transform: rotate(180deg) scale(1.03); }
+    }
+    @keyframes candleFlicker {
+      0%, 100% { opacity: 0.65; filter: blur(40px) brightness(1); }
+      25% { opacity: 0.85; filter: blur(45px) brightness(1.2); }
+      50% { opacity: 0.55; filter: blur(38px) brightness(0.95); }
+      75% { opacity: 0.95; filter: blur(48px) brightness(1.25); }
+    }
+    @keyframes emberFloat {
+      0% { transform: translateY(0) translateX(0) scale(0.8); opacity: 0; }
+      20% { opacity: 0.8; }
+      80% { opacity: 0.6; }
+      100% { transform: translateY(-120px) translateX(25px) scale(0.2); opacity: 0; }
+    }
+
+    .prophecy-orb {
+      animation: orbFloat 8s ease-in-out infinite;
+    }
+    .rune-ring {
+      animation: ringPulse 18s linear infinite;
+    }
+    .candlelight-ambient {
+      animation: candleFlicker 5s ease-in-out infinite;
+    }
+
+    /* Floating magical ember particles */
+    .ember {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffe088 20%, #d4af37 60%, rgba(184,134,11,0) 100%);
+      pointer-events: none;
+      box-shadow: 0 0 10px #f2ca50, 0 0 20px #e9c349;
+    }
+
+    /* Flex masonry (avoids Safari clipping transformed cards in CSS columns) */
+    .masonry-flex {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      width: 100%;
+    }
+    .masonry-col {
+      display: flex;
+      flex: 1 1 0;
+      min-width: 0;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .masonry-item {
+      break-inside: auto;
+      margin-bottom: 0;
+    }
+
+    /* Antique parchment scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1a0b0b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #5a2618;
+      border: 1px solid #d4af37;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #d4af37;
+    }
+
+    /* ==========================================
+       MAGIC CURSOR — HARRY VOLANDO EN ESCOBA
+       ========================================== */
+    .harry-cursor {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 72px;
+      height: 48px;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0;
+      transform: translate3d(-200px, -200px, 0);
+      transition: opacity 180ms ease;
+      will-change: transform;
+      filter: drop-shadow(0 0 8px rgba(242, 202, 80, 0.55)) drop-shadow(0 5px 8px rgba(0, 0, 0, 0.55));
+    }
+    .harry-cursor.is-visible { opacity: 1; }
+    .harry-cursor svg { display: block; width: 100%; height: 100%; overflow: visible; }
+    #magic-trail {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9998;
+      pointer-events: none;
+    }
+    body.magic-cursor-on,
+    body.magic-cursor-on * { cursor: none !important; }
+    body.magic-cursor-on input,
+    body.magic-cursor-on textarea,
+    body.magic-cursor-on select { cursor: text !important; }
+
+    /* ==========================================
+       ÓRBITA DE POLAROIDS — LÁMPARA 360
+       ========================================== */
+    .orbit-stage {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .orbit-card {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 68px;
+      height: 94px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      pointer-events: auto;
+      transform: translate(-50%, -50%);
+      transform-origin: center center;
+      will-change: transform, opacity;
+      cursor: pointer;
+    }
+    .orbit-card__inner {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      padding: 4px;
+      border: 2px solid #d4af37;
+      border-radius: 10px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #fffdf6 0%, #f4ebd0 60%, #ede0c8 100%);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.55), 0 0 14px rgba(212, 175, 55, 0.22);
+      transition: border-color 220ms ease, box-shadow 220ms ease;
+    }
+    .orbit-card:hover .orbit-card__inner,
+    .orbit-card:focus-visible .orbit-card__inner {
+      border-color: #f2ca50;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.65), 0 0 22px rgba(242, 202, 80, 0.45);
+    }
+    .orbit-card:focus-visible {
+      outline: 2px solid #f2ca50;
+      outline-offset: 4px;
+    }
+    .orbit-card__photo {
+      display: block;
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow: hidden;
+      border-radius: 6px;
+      background: #1a0b0b;
+    }
+    .orbit-card__photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(0.15);
+    }
+    .orbit-card__label {
+      display: block;
+      flex: 0 0 auto;
+      padding-top: 3px;
+      overflow: hidden;
+      color: #740001;
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      font-weight: 700;
+      line-height: 1.1;
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .orbit-card__seal {
+      position: absolute;
+      top: -1px;
+      right: -1px;
+      padding: 1px 4px;
+      border: 1px solid #d4af37;
+      border-top: 0;
+      border-right: 0;
+      border-bottom-left-radius: 6px;
+      background: #740001;
+      color: #f2ca50;
+      font-family: 'Cinzel', serif;
+      font-size: 6px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+    @media (min-width: 768px) {
+      .harry-cursor { width: 84px; height: 56px; }
+      .orbit-card { width: 88px; height: 120px; }
+      .orbit-card__label { font-size: 9px; }
+      .orbit-card__seal { font-size: 7px; }
+    }
+
+    /* ==========================================
+       GALERÍA ORGANIZADA POR CARPETAS
+       ========================================== */
+    .empty-folder {
+      flex: 1 1 100%;
+      width: 100%;
+      padding: 2rem 1rem;
+      border: 1px dashed rgba(212, 175, 55, 0.45);
+      border-radius: 0.75rem;
+      color: #d7ceb4;
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      font-style: italic;
+      text-align: center;
+    }
+    .gallery-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 4rem 1rem;
+      color: #f2ca50;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+    }
+    .gallery-loading__spinner {
+      width: 22px;
+      height: 22px;
+      border: 2px solid rgba(242, 202, 80, 0.25);
+      border-top-color: #f2ca50;
+      border-radius: 50%;
+      animation: magicSpin 0.9s linear infinite;
+    }
+    @keyframes magicSpin {
+      to { transform: rotate(360deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .harry-cursor, #magic-trail { display: none; }
+      .gallery-loading__spinner { animation: none; }
+    }
+  </style>
+</head>
+<body class="bg-[#1a0b0b] text-[#f4ddd9] font-body-md antialiased min-h-screen selection:bg-[#d4af37] selection:text-[#1a0b0b] relative overflow-x-hidden">
+<!-- Magic Cursor: Harry volando en escoba + estela de chispas -->
+<canvas aria-hidden="true" id="magic-trail"></canvas>
+<div aria-hidden="true" class="harry-cursor" id="harry-cursor">
+<svg viewBox="0 0 72 48" xmlns="http://www.w3.org/2000/svg">
+<g>
+<path d="M2 31 L18 23 L21 29 L7 39 Z" fill="#8d160e"/>
+<path d="M5 26 L18 26 M3 30 L18 30 M5 35 L19 32" stroke="#d4af37" stroke-linecap="round" stroke-width="1.1" opacity=".85"/>
+<path d="M17 33 L57 17" stroke="#b8860b" stroke-linecap="round" stroke-width="4.5"/>
+<path d="M17 33 L57 17" stroke="#f2ca50" stroke-linecap="round" stroke-width="1.3" opacity=".7"/>
+<path d="M34 12 C29 17 27 24 25 31 L42 25 C45 21 42 15 34 12 Z" fill="#1f1610"/>
+<path d="M27 22 C20 22 17 27 15 32 L26 30 Z" fill="#5a201c"/>
+<circle cx="40" cy="13" r="4.5" fill="#f4ddd9"/>
+<path d="M35 10 C36 5.5 44 5.5 45 10 C41 8 39 8 35 10 Z" fill="#1f1610"/>
+<circle cx="38.6" cy="13" r=".7" fill="#1f1610"/>
+<circle cx="41.8" cy="13" r=".7" fill="#1f1610"/>
+<path d="M36.9 12 H39.2 M40.4 12 H42.7" stroke="#d4af37" stroke-width=".65"/>
+<path d="M37.5 17 C43 18 49 18 53 15" fill="none" stroke="#d4af37" stroke-linecap="round" stroke-width="2.6"/>
+<path d="M37.5 17 C34 20 31 24 32 28" fill="none" stroke="#8d160e" stroke-linecap="round" stroke-width="2"/>
+<circle cx="47.5" cy="19" r="1.8" fill="#f4ddd9"/>
+<circle cx="52" cy="16.5" r="1.5" fill="#f4ddd9"/>
+<circle cx="63" cy="12" r="1.2" fill="#ffe088"/>
+<path d="M63 7 V17 M58 12 H68" stroke="#f2ca50" stroke-width=".9" stroke-linecap="round"/>
+</g>
+</svg>
+</div>
+<!-- Ambient Gryffindor & Great Hall Candlelight Atmosphere Backdrop -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<!-- Deep Mahogany & Crimson Vignette -->
+<div class="absolute inset-0 bg-gradient-to-b from-[#1a0b0b] via-[#240e0e] to-[#140707]"></div>
+<div class="absolute -top-40 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-[#740001]/25 via-[#3d0c11]/20 to-transparent rounded-full blur-[120px] pointer-events-none"></div>
+<div class="absolute top-1/3 -right-20 w-[550px] h-[550px] bg-gradient-to-bl from-[#d4af37]/15 via-[#8d160e]/20 to-transparent rounded-full blur-[140px] candlelight-ambient pointer-events-none"></div>
+<div class="absolute -bottom-20 left-1/3 w-[700px] h-[400px] bg-[#d4af37]/10 rounded-full blur-[130px] pointer-events-none"></div>
+<!-- Floating Golden Embers -->
+<div class="ember animate-[emberFloat_7s_linear_infinite]" style="top:75%; left:15%; animation-delay: 0s;"></div>
+<div class="ember animate-[emberFloat_9s_linear_infinite]" style="top:60%; left:45%; animation-delay: 2s;"></div>
+<div class="ember animate-[emberFloat_8s_linear_infinite]" style="top:80%; left:78%; animation-delay: 3.5s;"></div>
+<div class="ember animate-[emberFloat_6s_linear_infinite]" style="top:50%; left:88%; animation-delay: 1s;"></div>
+<div class="ember animate-[emberFloat_10s_linear_infinite]" style="top:40%; left:22%; animation-delay: 4.5s;"></div>
+</div>
+<!-- ========================================== -->
+<!-- PORTKEY MAGIC TRANSITION OVERLAY CONTAINER -->
+<!-- ========================================== -->
+<div class="fixed inset-0 pointer-events-none z-[100] opacity-0 transition-opacity duration-700 flex items-center justify-center bg-[#1a0b0b]/90 backdrop-blur-md" id="portkey-overlay">
+<div class="relative flex flex-col items-center justify-center text-center p-8">
+<div class="relative w-48 h-48 flex items-center justify-center">
+<!-- Magic Vortex rings -->
+<div class="absolute inset-0 rounded-full border-2 border-dashed border-[#d4af37]/70 animate-[spin_3s_linear_infinite]"></div>
+<div class="absolute inset-4 rounded-full border-2 border-[#740001]/60 animate-[spin_5s_linear_infinite_reverse]"></div>
+<div class="absolute inset-8 rounded-full bg-gradient-to-tr from-[#d4af37] via-[#8d160e] to-[#740001] opacity-40 blur-xl animate-pulse"></div>
+<span class="material-symbols-outlined text-6xl text-[#f2ca50] animate-bounce">auto_awesome</span>
+</div>
+<h3 class="font-cinzel text-2xl text-[#f2ca50] mt-4 tracking-widest font-bold drop-shadow-[0_2px_10px_rgba(212,175,55,0.4)]">¡Portkey Activado!</h3>
+<p class="font-body-md text-[#d7ceb4] italic mt-1">Traspasando las brumas del tiempo y la memoria...</p>
+</div>
+</div>
+<!-- ========================================== -->
+<!-- 1. ANNIVERSARY LOCK SCREEN / VAULT MODAL   -->
+<!-- ========================================== -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-[#140707]/90 backdrop-blur-xl p-4 transition-all duration-500" id="anniversary-modal">
+<div class="w-full max-w-md bg-[#f4ebd0] text-[#2b1b17] border-2 border-[#d4af37] p-7 md:p-9 rounded-xl shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(212,175,55,0.25)] relative overflow-hidden">
+<!-- Filigree Corner Accents -->
+<div class="absolute top-1 left-1 text-[#d4af37] text-xs pointer-events-none opacity-80 font-cinzel">✦ ❖</div>
+<div class="absolute top-1 right-1 text-[#d4af37] text-xs pointer-events-none opacity-80 font-cinzel">❖ ✦</div>
+<div class="absolute bottom-1 left-1 text-[#d4af37] text-xs pointer-events-none opacity-80 font-cinzel">✦ ❖</div>
+<div class="absolute bottom-1 right-1 text-[#d4af37] text-xs pointer-events-none opacity-80 font-cinzel">❖ ✦</div>
+<!-- Ambient warm glow inside parchment modal -->
+<div class="absolute -top-20 -right-20 w-44 h-44 bg-[#d4af37]/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="absolute -bottom-20 -left-20 w-44 h-44 bg-[#740001]/15 rounded-full blur-2xl pointer-events-none"></div>
+<div class="relative z-10 text-center flex flex-col items-center">
+<!-- Wax seal / Lock Crest -->
+<div class="w-16 h-16 rounded-full bg-[#740001] border-2 border-[#d4af37] flex items-center justify-center text-[#f2ca50] mb-3 shadow-[0_0_25px_rgba(116,0,1,0.5),0_0_15px_rgba(212,175,55,0.4)]">
+<span class="material-symbols-outlined text-3xl">lock_open</span>
+</div>
+<span class="font-cinzel text-[11px] font-bold tracking-[0.2em] text-[#740001] uppercase mb-1">Cámara de los Recuerdos Secretos</span>
+<h2 class="font-headline-lg text-2xl md:text-3xl text-[#1f1610] font-bold mb-2">Bóveda del Pensieve</h2>
+<p class="font-body-md text-[#3e2723] italic mb-6 px-2 text-base leading-relaxed">
+  "Las palabras y los lazos más puros sellan este santuario. ¿Recuerdas el día sagrado de nuestro comienzo?"
+</p>
+<!-- Question Form -->
+<form class="w-full space-y-4" id="vault-form" onsubmit="handleUnlock(event)">
+<div class="text-left">
+<label class="block font-cinzel text-xs font-bold text-[#740001] uppercase tracking-wider mb-1.5" for="anniv-date">
+  Fecha de nuestro aniversario
+</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-[#8d160e] text-xl">calendar_month</span>
+<input class="w-full bg-[#fffdf6] border-2 border-[#c5a059] focus:border-[#740001] focus:ring-1 focus:ring-[#740001] rounded-lg py-2.5 pl-10 pr-4 text-[#1f1610] font-body-md font-semibold placeholder:text-[#998b75] text-base transition-all shadow-inner" id="anniv-date" placeholder="Ej. Noviembre 25 ó 25/11" required="" type="text"/>
+</div>
+<p class="hidden text-xs text-[#740001] font-bold mt-1.5 flex items-center gap-1" id="vault-error">
+<span class="material-symbols-outlined text-sm">error</span> Fecha incorrecta. Intenta con "Noviembre 25" o usa Revelio.
+</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-3 pt-2">
+<button class="flex-1 bg-gradient-to-r from-[#d4af37] via-[#f2ca50] to-[#b8860b] text-[#241a00] font-cinzel font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 hover:brightness-105 active:scale-95 transition-all shadow-[0_4px_15px_rgba(212,175,55,0.45)] border border-[#ffe088]" type="submit">
+<span class="material-symbols-outlined text-lg">key</span>
+<span class="tracking-wider">Alohomora</span>
+</button>
+<button class="flex-1 bg-[#740001] hover:bg-[#8d160e] text-[#f2ca50] border border-[#d4af37] font-cinzel font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-all shadow-[0_4px_15px_rgba(116,0,1,0.35)] active:scale-95" onclick="unlockDirectly()" type="button">
+<span class="material-symbols-outlined text-lg">auto_fix_high</span>
+<span class="tracking-wider">✨ Revelio</span>
+</button>
+</div>
+</form>
+<div class="mt-6 pt-4 border-t border-[#d4af37]/40 text-center w-full">
+<span class="font-handwriting text-2xl text-[#740001] font-bold">"Amor sempiterno, más allá del tiempo y la distancia"</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ========================================== -->
+<!-- TOP NAVIGATION BAR (Exact Structure, Warmer Gryffindor / Mahogany Theme) -->
+<!-- ========================================== -->
+<div class="relative z-10 flex h-auto w-full flex-col bg-[#23120e] border-b border-[#d4af37]/30 shadow-[0_4px_25px_rgba(0,0,0,0.6)]">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 lg:px-40 flex flex-1 justify-center py-2 lg:py-4">
+<div class="layout-content-container flex flex-col max-w-[1080px] flex-1 min-w-0 w-full">
+<header class="flex flex-wrap items-center justify-between gap-y-2 whitespace-nowrap border-b border-[#5a2a22]/60 px-4 md:px-8 py-2.5">
+<div class="flex items-center gap-3 text-[#f2ca50] min-w-0">
+<div class="size-6 text-[#d4af37] flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">local_fire_department</span>
+</div>
+<h2 class="text-[#f4ebd0] font-cinzel text-base md:text-lg font-bold leading-tight tracking-wider">Pensieve Archives • Lumos</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4 md:gap-8">
+<div class="hidden md:flex items-center gap-7">
+<a class="text-[#ede0c8] text-sm font-cinzel font-semibold hover:text-[#f2ca50] transition-colors" href="javascript:void(0)" onclick="switchToLampView()">Lámpara Profecía</a>
+<a class="text-[#ede0c8] text-sm font-cinzel font-semibold hover:text-[#f2ca50] transition-colors" href="javascript:void(0)" onclick="executePortkeyNav('all')">Galería Pensieve</a>
+<a class="text-[#ede0c8] text-sm font-cinzel font-semibold hover:text-[#f2ca50] transition-colors" href="javascript:void(0)" onclick="openAnniversaryModal()">Bóveda Secreta</a>
+</div>
+<div class="flex gap-2.5 shrink-0">
+<button class="flex min-w-[88px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-gradient-to-r from-[#d4af37] to-[#b8860b] text-[#241a00] text-xs font-cinzel font-bold tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-[0_0_15px_rgba(212,175,55,0.35)]" onclick="executePortkeyNav('all')">
+<span>✨ Revelio</span>
+</button>
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 bg-[#3d1512] border border-[#d4af37]/40 text-[#f2ca50] gap-2 text-xs font-bold px-3 hover:bg-[#5a201c] transition-all shadow-sm" onclick="toggleMusicMagic()" title="Melodía del Pensieve">
+<span class="text-[#f2ca50]" data-icon="Champagne">
+<span class="material-symbols-outlined text-lg">music_note</span>
+</span>
+</button>
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 bg-[#3d1512] border border-[#d4af37]/40 text-[#f2ca50] gap-2 text-xs font-bold px-3 hover:bg-[#5a201c] transition-all shadow-sm" onclick="executePortkeyNav('random')" title="Girar Brújula Mágica">
+<span class="text-[#f2ca50]" data-icon="Compass">
+<span class="material-symbols-outlined text-lg">explore</span>
+</span>
+</button>
+</div>
+</div>
+</header>
+</div>
+</div>
+</div>
+</div>
+<!-- ========================================== -->
+<!-- MAIN APP CONTAINER                         -->
+<!-- ========================================== -->
+<main class="relative z-10 w-full min-h-[calc(100vh-80px)] overflow-hidden">
+<!-- **************************************** -->
+<!-- VIEW A: 3D CRYSTAL PROPHECY LAMP STAGE   -->
+<!-- **************************************** -->
+<section class="w-full flex flex-col items-center justify-between min-h-screen px-4 py-6 md:py-10 transition-all duration-700" id="lamp-stage-view">
+<!-- Stage Ambient Glow Caustics (Warm Amber & Gold) -->
+<div class="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden">
+<div class="w-[500px] h-[500px] md:w-[720px] md:h-[720px] rounded-full bg-gradient-to-tr from-[#d4af37]/25 via-[#740001]/15 to-transparent blur-[120px] candlelight-ambient"></div>
+<div class="absolute bottom-16 w-3/4 h-36 bg-[#d4af37]/20 blur-[100px] rounded-full"></div>
+</div>
+<!-- Top Title Tag -->
+<div class="relative z-10 text-center max-w-xl mx-auto mb-4">
+<div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#341814] border border-[#d4af37]/50 text-[#f2ca50] mb-2 shadow-[0_0_15px_rgba(212,175,55,0.25)]">
+<span class="material-symbols-outlined text-sm">flare</span>
+<span class="font-cinzel tracking-widest text-xs font-semibold">Artefacto Mágico N° 724</span>
+</div>
+<h1 class="font-headline-lg text-3xl md:text-5xl text-[#fffdf6] font-bold tracking-tight drop-shadow-md">
+  Lámpara de Profecía 360°
+</h1>
+<p class="font-body-lg text-[#d7ceb4] text-base md:text-lg mt-2 italic max-w-md mx-auto">
+  Gira el orbe de cristal para contemplar la memoria viva de nuestro amor, suspendida en luz pura de velas eternas.
+</p>
+</div>
+<!-- 3D Sphere Interactive Vessel -->
+<div class="relative z-10 my-auto w-full max-w-lg aspect-square flex items-center justify-center p-4">
+<!-- Rotating Ancient Runes Circle in Burnished Gold -->
+<div class="absolute inset-2 md:inset-0 rounded-full border border-[#d4af37]/30 rune-ring flex items-center justify-center pointer-events-none">
+<div class="w-full h-full rounded-full border border-dashed border-[#d4af37]/50 opacity-80"></div>
+<span class="absolute top-2 text-[10px] text-[#f2ca50] font-cinzel tracking-widest">⚡ CARACAS • 10.4806° N</span>
+<span class="absolute bottom-2 text-[10px] text-[#f2ca50] font-cinzel tracking-widest">✦ COLOMBIA • 4.7110° N</span>
+<span class="absolute right-2 text-[10px] text-[#f2ca50] font-cinzel tracking-widest rotate-90">✧ CARIPE • 10.2000° N</span>
+<span class="absolute left-2 text-[10px] text-[#f2ca50] font-cinzel tracking-widest -rotate-90">☾ CUMANÁ • 10.4539° N</span>
+</div>
+<!-- Órbita de polaroids: se genera automáticamente desde memorias.json -->
+<div aria-label="Recuerdos orbitando la lámpara de profecía" class="orbit-stage" id="orbit-stage"></div>
+<!-- The Central Glowing Prophecy Crystal Orb on Antique Polished Mahogany / Brass Pedestal -->
+<div class="relative z-20 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full p-2.5 bg-gradient-to-b from-[#d4af37]/60 via-[#8d160e]/40 to-[#3d120a] backdrop-blur-md shadow-[0_0_90px_rgba(212,175,55,0.5),0_0_30px_rgba(116,0,1,0.4)] flex items-center justify-center prophecy-orb group cursor-grab active:cursor-grabbing border-2 border-[#d4af37]">
+<!-- Crystal Inner Glass Surface -->
+<div class="relative w-full h-full rounded-full overflow-hidden flex items-center justify-center border-4 border-[#d4af37]/60 shadow-inner bg-gradient-to-tr from-[#1a0b0b] via-[#2d120e] to-[#1a0b0b]">
+<!-- Central Romance Photograph inside crystal with warm amber radiant illumination -->
+<img class="w-full h-full object-cover object-center scale-110 group-hover:scale-125 transition-transform duration-1000 filter contrast-115 brightness-105" data-alt="An ethereal fine-art photograph of a young romantic couple laughing gently together inside an enchanted glass conservatory. Golden magical motes of light drift around them like swirling fireflies, rendered with high contrast, rich deep emerald greens, warm champagne tones, and vintage Harry Potter aesthetic." id="prophecy-core-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx98knC1nxVbzEAbfTYyLxvYlQrSwyNaZVxUe791AhBGIRM3WP8kGCY5FPAzMYrnRrc7ebC5XV4gSbrmv7_DV5Dla_lfYQ-wxDc0SPmOIWCpa0fj_FxSDoQnJhVtGRbL90xP3qaaToG-hiwbThd7UsuCa40gCGZsOgy4D6mDDjeU61o7nHEhmhP9xulCpSTnopeE_uL8BEfgf3aDhSUuJcub1PXg99wAPW2psFlV8"/>
+<!-- Warm candlefire reflection overlay -->
+<div class="absolute inset-0 bg-gradient-to-tr from-[#740001]/30 via-[#d4af37]/25 to-transparent pointer-events-none mix-blend-screen opacity-80"></div>
+<div class="absolute top-4 left-6 w-1/3 h-1/4 bg-white/25 rounded-full blur-md pointer-events-none transform -rotate-45"></div>
+<!-- Prophecy Whisper Core Text -->
+<div class="absolute bottom-6 inset-x-4 text-center pointer-events-none">
+<span class="px-4 py-1.5 rounded-full bg-[#1a0b0b]/90 text-[#f2ca50] font-handwriting text-xl md:text-2xl backdrop-blur-md border border-[#d4af37] shadow-[0_0_15px_rgba(212,175,55,0.4)]" id="prophecy-core-quote">
+  "Nuestros destinos entrelazados"
+</span>
+</div>
+</div>
+<!-- Carved Brass & Polished Mahogany Pedestal Caustic Base -->
+<div class="absolute -bottom-8 w-56 h-10 bg-gradient-to-r from-transparent via-[#d4af37]/50 to-transparent blur-xl rounded-full"></div>
+</div>
+</div>
+<!-- ======================================================== -->
+<!-- BOTTOM TRAVEL QUEST CONTROL DOCK & SEARCH PILLS NAV     -->
+<!-- ======================================================== -->
+<div class="relative z-20 w-full max-w-3xl mt-6 px-2">
+<div class="bg-[#24120e] border-2 border-[#d4af37]/60 backdrop-blur-lg rounded-2xl p-4 md:p-6 shadow-[0_15px_40px_rgba(0,0,0,0.8),0_0_25px_rgba(212,175,55,0.2)]">
+<div class="flex items-center justify-between gap-2 mb-3">
+<div class="flex items-center gap-2 text-[#f2ca50] font-cinzel font-bold text-base md:text-lg">
+<span class="material-symbols-outlined text-[#f2ca50] text-xl">travel_explore</span>
+<span>Búsqueda Portkey de Aventuras</span>
+</div>
+<span class="text-xs font-cinzel text-[#d7ceb4] hidden sm:inline tracking-wider">Selecciona un destino o invoca tu memoria</span>
+</div>
+<!-- Travel Quest Search Input (Aged Parchment Scroll Style) -->
+<div class="flex w-full items-stretch rounded-xl overflow-hidden border-2 border-[#d4af37] focus-within:border-[#f2ca50] transition-all bg-[#f4ebd0] mb-4 shadow-inner">
+<div class="text-[#740001] flex items-center justify-center pl-4 pr-1">
+<span class="material-symbols-outlined text-2xl">search</span>
+</div>
+<input class="w-full bg-transparent border-0 text-[#1f1610] placeholder:text-[#8a7a65] font-body-md font-semibold text-base px-3 py-3 focus:ring-0 focus:outline-none" id="travel-quest-input" onkeydown="if(event.key === 'Enter') handleSearchSubmit()" placeholder="¿Recuerdas algún lugar al que viajamos juntos?" type="text"/>
+<button class="bg-gradient-to-r from-[#740001] to-[#8d160e] text-[#f2ca50] font-cinzel font-bold px-4 md:px-6 flex items-center gap-1.5 hover:brightness-110 active:scale-95 transition-all border-l border-[#d4af37]" onclick="handleSearchSubmit()">
+<span class="material-symbols-outlined text-base">near_me</span>
+<span class="hidden sm:inline tracking-wider">Invocar</span>
+</button>
+</div>
+<!-- Destination Pills / Chips Navigation (Ivory parchment chips with gold border) -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin min-w-0 w-full overscroll-x-contain" id="nav-filter-chips">
+<button class="group flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#341814] border border-[#d4af37]/60 hover:border-[#f2ca50] text-[#f4ebd0] hover:text-[#f2ca50] transition-all shrink-0 active:scale-95 shadow-sm" data-nav-filter="all" onclick="executePortkeyNav('all')">
+<span class="material-symbols-outlined text-base text-[#f2ca50]">auto_awesome</span>
+<span class="font-cinzel text-xs md:text-sm font-semibold nav-filter-label">Todas (16)</span>
+</button>
+<button class="group flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#341814] border border-[#d4af37]/60 hover:border-[#f2ca50] text-[#f4ebd0] hover:text-[#f2ca50] transition-all shrink-0 active:scale-95 shadow-sm" data-nav-filter="caracas" onclick="executePortkeyNav('caracas')">
+<span class="material-symbols-outlined text-base text-[#f2ca50]">landscape</span>
+<span class="font-cinzel text-xs md:text-sm font-semibold nav-filter-label">Caracas (4)</span>
+</button>
+<button class="group flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#341814] border border-[#d4af37]/60 hover:border-[#f2ca50] text-[#f4ebd0] hover:text-[#f2ca50] transition-all shrink-0 active:scale-95 shadow-sm" data-nav-filter="bogota" onclick="executePortkeyNav('bogota')">
+<span class="material-symbols-outlined text-base text-[#f2ca50]">cloud</span>
+<span class="font-cinzel text-xs md:text-sm font-semibold nav-filter-label">Colombia (4)</span>
+</button>
+<button class="group flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#341814] border border-[#d4af37]/60 hover:border-[#f2ca50] text-[#f4ebd0] hover:text-[#f2ca50] transition-all shrink-0 active:scale-95 shadow-sm" data-nav-filter="caripe" onclick="executePortkeyNav('caripe')">
+<span class="material-symbols-outlined text-base text-[#f2ca50]">eco</span>
+<span class="font-cinzel text-xs md:text-sm font-semibold nav-filter-label">Caripe (4)</span>
+</button>
+<button class="group flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#341814] border border-[#d4af37]/60 hover:border-[#f2ca50] text-[#f4ebd0] hover:text-[#f2ca50] transition-all shrink-0 active:scale-95 shadow-sm" data-nav-filter="cumana" onclick="executePortkeyNav('cumana')">
+<span class="material-symbols-outlined text-base text-[#f2ca50]">water</span>
+<span class="font-cinzel text-xs md:text-sm font-semibold nav-filter-label">Cumaná (4)</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- ******************************************************* -->
+<!-- VIEW B: FULL MASONRY MEMORY GALLERY (PENSIEVE ARCHIVE)  -->
+<!-- ******************************************************* -->
+<section class="hidden opacity-0 w-full min-h-screen transition-opacity duration-700 pb-20" id="gallery-stage-view">
+<!-- Top Gallery Header & Breadcrumbs Bar -->
+<div class="border-b border-[#d4af37]/40 bg-[#23120e] py-6 px-4 md:px-12 sticky top-0 z-30 shadow-2xl backdrop-blur-md bg-opacity-95">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<!-- Breadcrumbs / Dynamic Title -->
+<div class="flex items-center gap-2 text-xs font-cinzel text-[#d4af37] mb-1">
+<button class="hover:underline flex items-center gap-1 text-[#ede0c8]" onclick="switchToLampView()">
+<span>Lámpara Profecía</span>
+</button>
+<span>/</span>
+<span class="font-bold text-[#f2ca50]" id="gallery-breadcrumb-active">Todas las Memorias Mágicas</span>
+</div>
+<h2 class="font-headline-lg text-2xl md:text-4xl text-[#fffdf6] font-bold tracking-tight" id="gallery-main-heading">
+  Pensieve: Memorias Mágicas
+</h2>
+<p class="font-body-md text-[#d7ceb4] italic text-sm md:text-base mt-0.5">
+  Fragmentos de luz y recuerdos suspendidos en el tiempo grabados en pergamino eterno.
+</p>
+</div>
+<!-- Return to Prophecy 360 CTA Button (Top) -->
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 bg-[#740001] hover:bg-[#8d160e] text-[#f2ca50] border border-[#d4af37] px-5 py-2.5 rounded-lg shadow-[0_0_20px_rgba(116,0,1,0.4)] active:scale-95 transition-all text-sm font-cinzel font-bold group" onclick="switchToLampView()">
+<span class="material-symbols-outlined text-[#f2ca50] group-hover:-translate-x-1 transition-transform">arrow_back</span>
+<span>⚡ Regresar a Lámpara Profecía 360°</span>
+</button>
+</div>
+</div>
+<!-- Filter Chips Bar inside Gallery Header -->
+<div class="max-w-7xl mx-auto mt-4 pt-3 border-t border-[#d4af37]/30 flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin min-w-0 w-full overscroll-x-contain" id="gallery-filter-chips">
+<button class="gallery-filter-btn flex items-center gap-2 px-4 py-1.5 rounded-lg bg-gradient-to-r from-[#d4af37] to-[#b8860b] text-[#241a00] font-cinzel text-xs md:text-sm font-bold transition-all shrink-0 shadow" data-filter="all" onclick="filterGallery('all')">
+<span>Todas</span>
+<span class="px-2 py-0.5 rounded-full bg-[#1a0b0b] text-[#f2ca50] text-[11px] font-bold">16</span>
+</button>
+<button class="gallery-filter-btn flex items-center gap-2 px-4 py-1.5 rounded-lg bg-[#341814] text-[#f4ebd0] border border-[#d4af37]/40 hover:border-[#f2ca50] font-cinzel text-xs md:text-sm font-semibold transition-all shrink-0" data-filter="caracas" onclick="filterGallery('caracas')">
+<span>Caracas</span>
+<span class="px-2 py-0.5 rounded-full bg-[#1a0b0b] text-[#d7ceb4] text-[11px]">4</span>
+</button>
+<button class="gallery-filter-btn flex items-center gap-2 px-4 py-1.5 rounded-lg bg-[#341814] text-[#f4ebd0] border border-[#d4af37]/40 hover:border-[#f2ca50] font-cinzel text-xs md:text-sm font-semibold transition-all shrink-0" data-filter="bogota" onclick="filterGallery('bogota')">
+<span>Colombia (Bogotá)</span>
+<span class="px-2 py-0.5 rounded-full bg-[#1a0b0b] text-[#d7ceb4] text-[11px]">4</span>
+</button>
+<button class="gallery-filter-btn flex items-center gap-2 px-4 py-1.5 rounded-lg bg-[#341814] text-[#f4ebd0] border border-[#d4af37]/40 hover:border-[#f2ca50] font-cinzel text-xs md:text-sm font-semibold transition-all shrink-0" data-filter="caripe" onclick="filterGallery('caripe')">
+<span>Caripe</span>
+<span class="px-2 py-0.5 rounded-full bg-[#1a0b0b] text-[#d7ceb4] text-[11px]">4</span>
+</button>
+<button class="gallery-filter-btn flex items-center gap-2 px-4 py-1.5 rounded-lg bg-[#341814] text-[#f4ebd0] border border-[#d4af37]/40 hover:border-[#f2ca50] font-cinzel text-xs md:text-sm font-semibold transition-all shrink-0" data-filter="cumana" onclick="filterGallery('cumana')">
+<span>Cumaná</span>
+<span class="px-2 py-0.5 rounded-full bg-[#1a0b0b] text-[#d7ceb4] text-[11px]">4</span>
+</button>
+</div>
+</div>
+<!-- Masonry Content Grid Container (Restyled with Aged Parchment Cards & Espresso Ink) -->
+<div class="max-w-7xl mx-auto px-4 md:px-8 pt-8">
+<!-- Search Query Feedback pill -->
+<div class="hidden mb-6 items-center gap-2 bg-[#f4ebd0] border-2 border-[#740001] px-4 py-2 rounded-full w-fit shadow-md" id="search-active-pill">
+<span class="material-symbols-outlined text-[#740001] text-sm">search</span>
+<span class="text-xs font-cinzel text-[#2b1b17] font-bold">Filtrando por: <strong class="text-[#740001]" id="search-term-text"></strong></span>
+<button class="ml-2 text-[#740001] hover:text-black text-xs flex items-center" onclick="clearSearchFilter()">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+<div class="space-y-16" id="gallery-folders-container">
+<div class="gallery-loading" id="gallery-loading">
+<div class="gallery-loading__spinner"></div>
+<span>Invocando las memorias del Pensieve...</span>
+</div>
+</div>
+<!-- Bottom Return CTA to Prophecy Lamp -->
+<div class="mt-16 text-center border-t border-[#d4af37]/40 pt-8 flex flex-col items-center">
+<p class="font-handwriting text-3xl text-[#f2ca50] mb-4">"Cada recuerdo es un faro que ilumina nuestro camino"</p>
+<button class="flex items-center gap-3 bg-gradient-to-r from-[#d4af37] via-[#f2ca50] to-[#b8860b] text-[#241a00] font-cinzel font-bold text-base px-8 py-3.5 rounded-lg shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:brightness-110 active:scale-95 transition-all border border-[#ffe088]" onclick="switchToLampView()">
+<span class="material-symbols-outlined text-xl">auto_awesome</span>
+<span class="tracking-wider">⚡ Regresar a Lámpara Profecía 360°</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- ========================================== -->
+<!-- 4. FULL-SCREEN LIGHTBOX MODAL (Warm Aged Parchment & Polished Wood) -->
+<!-- ========================================== -->
+<div class="fixed inset-0 z-50 hidden opacity-0 bg-[#140707]/95 backdrop-blur-2xl transition-opacity duration-300 flex items-center justify-center p-4" id="lightbox-modal">
+<div class="relative w-full max-w-4xl bg-[#f4ebd0] border-2 border-[#d4af37] rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_40px_rgba(212,175,55,0.3)] flex flex-col md:flex-row max-h-[921px]">
+<!-- Close Button -->
+<button class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-[#1a0b0b]/80 text-[#f2ca50] hover:text-white border border-[#d4af37] flex items-center justify-center transition-all shadow-md" onclick="closeLightbox()">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+<!-- Lightbox Image Section -->
+<div class="md:w-3/5 bg-[#140707] flex items-center justify-center relative overflow-hidden">
+<img alt="Pensieve High Resolution Memory" class="w-full h-full object-contain max-h-[512px] md:max-h-[870px]" id="lightbox-img" src=""/>
+<div class="absolute bottom-3 left-3 bg-[#1a0b0b]/85 text-[#f2ca50] font-cinzel text-xs px-3 py-1 rounded-full border border-[#d4af37]/60 backdrop-blur-sm flex items-center gap-1.5 shadow">
+<span class="material-symbols-outlined text-sm">visibility</span>
+<span>Fragmento de Pensieve Auténtico</span>
+</div>
+</div>
+<!-- Lightbox Info / Parchment Journal Section with Espresso Text -->
+<div class="md:w-2/5 p-6 md:p-8 flex flex-col justify-between overflow-y-auto bg-gradient-to-b from-[#f4ebd0] to-[#ede0c8] border-t md:border-t-0 md:border-l-2 border-[#d4af37]/60 text-[#2b1b17]">
+<div>
+<!-- Badge & Location -->
+<div class="flex items-center gap-2 mb-3">
+<span class="px-2.5 py-0.5 rounded-full bg-[#740001] text-[#f2ca50] border border-[#d4af37] text-xs font-cinzel font-bold uppercase tracking-wider" id="lightbox-badge">
+  Destino
+</span>
+<span class="text-xs text-[#6e5d4e] font-cinzel font-bold" id="lightbox-date">
+  Fecha
+</span>
+</div>
+<h2 class="font-headline-sm text-2xl text-[#1f1610] mb-2 font-bold" id="lightbox-title">
+  Título de la Memoria
+</h2>
+<div class="flex items-center gap-1.5 text-xs text-[#740001] font-cinzel font-bold mb-6">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span id="lightbox-location">Ubicación Mágica</span>
+</div>
+<!-- Handwritten Snippet -->
+<div class="bg-[#fffdf6] p-4 rounded-xl border border-[#c5a059] relative shadow-inner">
+<span class="material-symbols-outlined absolute -top-3 left-4 text-[#740001] text-xl">format_quote</span>
+<p class="font-handwriting text-2xl text-[#2b1b17] leading-relaxed pt-2" id="lightbox-caption">
+  "Fragmento romántico escrito en pergamino..."
+</p>
+</div>
+<!-- Audio Note Indicator -->
+<div class="mt-6 flex items-center gap-3 p-3 rounded-lg bg-[#ede0c8] border border-[#d4af37]/60">
+<div class="w-8 h-8 rounded-full bg-[#740001] text-[#f2ca50] flex items-center justify-center shadow">
+<span class="material-symbols-outlined text-base">graphic_eq</span>
+</div>
+<div>
+<p class="text-xs font-cinzel font-bold text-[#1f1610]">Resonancia Sonora</p>
+<p class="text-xs text-[#6e5d4e] font-serif italic" id="lightbox-audio">Viento andino y campanadas</p>
+</div>
+</div>
+</div>
+<!-- Footer Actions inside Modal -->
+<div class="mt-8 pt-4 border-t border-[#d4af37]/40 flex items-center justify-between">
+<span class="font-cinzel text-[11px] text-[#740001] font-bold">Bóveda N° 724 • Lumos Eterno</span>
+<button class="text-xs text-[#740001] hover:text-black font-cinzel font-bold hover:underline" onclick="closeLightbox()">
+  Cerrar Pergamino
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- ========================================== -->
+<!-- JAVASCRIPT APPLICATION LOGIC               -->
+<!-- ========================================== -->
+<script>
+    // Global state
+    let isVaultUnlocked = false;
+    let currentFilter = 'all';
+    let galleryData = null;
+    let orbitCards = [];
+    let orbitRadiusX = 0;
+    let orbitRadiusY = 0;
+    let orbitPaused = false;
+    let orbitTime = 0;
+    let orbitStarted = false;
+    let FOLDER_ORDER = ['caracas', 'bogota', 'caripe', 'cumana'];
+    let FOLDER_SHORT = { caracas: 'Caracas', bogota: 'Bogotá', caripe: 'Caripe', cumana: 'Cumaná' };
+    const FOLDER_ICONS = {
+      caracas: 'landscape',
+      bogota: 'cloud',
+      caripe: 'eco',
+      cumana: 'water',
+      cuevas: 'terrain',
+      margarita: 'beach_access',
+      playita: 'beach_access',
+      corriendo: 'directions_run'
+    };
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const FALLBACK_IMG = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000"><defs><radialGradient id="g" cx="50%" cy="38%" r="65%"><stop offset="0%" stop-color="#40312f"/><stop offset="100%" stop-color="#1a0b0b"/></radialGradient></defs><rect width="800" height="1000" fill="url(#g)"/><circle cx="400" cy="440" r="120" fill="none" stroke="#d4af37" stroke-width="3" stroke-dasharray="8 14"/><path d="M400 350 L415 410 L475 425 L415 440 L400 500 L385 440 L325 425 L385 410 Z" fill="#f2ca50" opacity=".9"/><text x="400" y="620" fill="#f2ca50" font-family="Georgia,serif" font-size="34" text-anchor="middle" letter-spacing="6">RECUERDO MÁGICO</text><text x="400" y="668" fill="#d7ceb4" font-family="Georgia,serif" font-size="20" font-style="italic" text-anchor="middle">La imagen aún espera en el Pensieve</text></svg>');
+
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, ch => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[ch]));
+    }
+
+    function syncFolderMeta(data) {
+      const folders = data.carpetas || {};
+      FOLDER_ORDER = Object.keys(folders);
+      FOLDER_SHORT = {};
+      FOLDER_ORDER.forEach(key => {
+        const folder = folders[key] || {};
+        FOLDER_SHORT[key] = folder.corto || folder.nombre || key;
+      });
+    }
+
+    function renderFilters(data) {
+      const counts = memoryCounts(data);
+      const nav = document.getElementById('nav-filter-chips');
+      if (nav) {
+        const allButton = `
+          <button type="button" class="group flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#341814] border border-[#d4af37]/60 hover:border-[#f2ca50] text-[#f4ebd0] hover:text-[#f2ca50] transition-all shrink-0 active:scale-95 shadow-sm" data-nav-filter="all">
+            <span class="material-symbols-outlined text-base text-[#f2ca50]">auto_awesome</span>
+            <span class="font-cinzel text-xs md:text-sm font-semibold nav-filter-label">Todas (${counts.all})</span>
+          </button>`;
+        const categoryButtons = FOLDER_ORDER.map(key => {
+          const folder = data.carpetas?.[key] || {};
+          const icon = FOLDER_ICONS[key] || 'photo_library';
+          const label = escapeHtml(folder.corto || folder.nombre || key);
+          return `
+            <button type="button" class="group flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#341814] border border-[#d4af37]/60 hover:border-[#f2ca50] text-[#f4ebd0] hover:text-[#f2ca50] transition-all shrink-0 active:scale-95 shadow-sm" data-nav-filter="${escapeHtml(key)}">
+              <span class="material-symbols-outlined text-base text-[#f2ca50]">${icon}</span>
+              <span class="font-cinzel text-xs md:text-sm font-semibold nav-filter-label">${label} (${counts[key] ?? 0})</span>
+            </button>`;
+        }).join('');
+        nav.innerHTML = allButton + categoryButtons;
+        nav.querySelectorAll('[data-nav-filter]').forEach(btn => {
+          btn.addEventListener('click', () => executePortkeyNav(btn.dataset.navFilter));
+        });
+      }
+
+      const gallery = document.getElementById('gallery-filter-chips');
+      if (gallery) {
+        const activeClass = 'gallery-filter-btn flex items-center gap-2 px-4 py-1.5 rounded-lg bg-gradient-to-r from-[#d4af37] to-[#b8860b] text-[#241a00] font-cinzel text-xs md:text-sm font-bold transition-all shrink-0 shadow';
+        const inactiveClass = 'gallery-filter-btn flex items-center gap-2 px-4 py-1.5 rounded-lg bg-[#341814] text-[#f4ebd0] border border-[#d4af37]/40 hover:border-[#f2ca50] font-cinzel text-xs md:text-sm font-semibold transition-all shrink-0';
+        const allButton = `
+          <button type="button" class="${activeClass}" data-filter="all">
+            <span>Todas</span>
+            <span class="px-2 py-0.5 rounded-full bg-[#1a0b0b] text-[#f2ca50] text-[11px] font-bold">${counts.all}</span>
+          </button>`;
+        const categoryButtons = FOLDER_ORDER.map(key => {
+          const folder = data.carpetas?.[key] || {};
+          const label = escapeHtml(folder.nombre || folder.corto || key);
+          return `
+            <button type="button" class="${inactiveClass}" data-filter="${escapeHtml(key)}">
+              <span>${label}</span>
+              <span class="px-2 py-0.5 rounded-full bg-[#1a0b0b] text-[#d7ceb4] text-[11px]">${counts[key] ?? 0}</span>
+            </button>`;
+        }).join('');
+        gallery.innerHTML = allButton + categoryButtons;
+        gallery.querySelectorAll('[data-filter]').forEach(btn => {
+          btn.addEventListener('click', () => filterGallery(btn.dataset.filter));
+        });
+      }
+    }
+
+    // 0. Data loading, gallery folders & prophecy orbit
+    async function initMemorias() {
+      const container = document.getElementById('gallery-folders-container');
+      try {
+        const response = await fetch('memorias.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error(`No se pudo leer memorias.json (HTTP ${response.status})`);
+        galleryData = await response.json();
+        syncFolderMeta(galleryData);
+        renderFilters(galleryData);
+        renderGallery(galleryData);
+        renderOrbit(galleryData);
+        applyOrb(galleryData);
+      } catch (error) {
+        console.error('Error cargando memorias.json:', error);
+        if (container) {
+          container.innerHTML = `
+            <div class="empty-folder !block max-w-2xl mx-auto">
+              <p class="text-[#f2ca50] font-cinzel font-bold not-italic mb-2">No se pudieron invocar las memorias</p>
+              <p>Abre la página con MAMP o Live Server para que <strong>memorias.json</strong> pueda cargarse.</p>
+              <p class="text-xs mt-3 opacity-70">${escapeHtml(error.message)}</p>
+            </div>`;
+        }
+        const stage = document.getElementById('orbit-stage');
+        if (stage) stage.innerHTML = '';
+      }
+    }
+
+    function applyOrb(data) {
+      const orb = data.orbe || {};
+      const image = document.getElementById('prophecy-core-img');
+      if (image && orb.src) {
+        image.src = orb.src;
+        if (orb.alt) image.alt = orb.alt;
+      }
+      const quote = document.getElementById('prophecy-core-quote');
+      if (quote && orb.frase) quote.textContent = `"${orb.frase}"`;
+    }
+
+    function memoryCounts(data) {
+      const counts = { all: 0 };
+      FOLDER_ORDER.forEach(key => {
+        const total = data.carpetas?.[key]?.imagenes?.length || 0;
+        counts[key] = total;
+        counts.all += total;
+      });
+      return counts;
+    }
+
+    function updateMemoryCounts(data) {
+      const counts = memoryCounts(data);
+      document.querySelectorAll('.gallery-filter-btn').forEach(btn => {
+        const key = btn.getAttribute('data-filter');
+        const badge = btn.querySelector('span:last-child');
+        if (badge) badge.textContent = counts[key] ?? 0;
+      });
+      document.querySelectorAll('[data-nav-filter]').forEach(btn => {
+        const key = btn.getAttribute('data-nav-filter');
+        const label = btn.querySelector('.nav-filter-label');
+        if (label) label.textContent = `${key === 'all' ? 'Todas' : (FOLDER_SHORT[key] || key)} (${counts[key] ?? 0})`;
+      });
+    }
+
+    function renderGallery(data) {
+      const container = document.getElementById('gallery-folders-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      FOLDER_ORDER.forEach((key, folderIndex) => {
+        const folder = data.carpetas?.[key];
+        if (!folder) return;
+        const images = Array.isArray(folder.imagenes) ? folder.imagenes : [];
+        const section = document.createElement('section');
+        section.className = 'gallery-folder';
+        section.dataset.folder = key;
+        section.innerHTML = `
+          <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 border-b border-[#d4af37]/30 pb-4">
+            <div>
+              <span class="font-cinzel text-[11px] font-bold tracking-[0.25em] text-[#d4af37] uppercase">Carpeta ${String(folderIndex + 1).padStart(2, '0')}</span>
+              <h3 class="font-headline-lg text-2xl md:text-3xl text-[#fffdf6] font-bold tracking-tight mt-1">${escapeHtml(folder.nombre || key)}</h3>
+              <p class="font-body-md text-[#d7ceb4] italic text-sm md:text-base mt-0.5">${escapeHtml(folder.subtitulo || '')}</p>
+            </div>
+            <span class="folder-count inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#341814] border border-[#d4af37]/40 text-[#f2ca50] font-cinzel text-xs font-bold shrink-0">
+              <span class="material-symbols-outlined text-sm">photo_library</span>
+              <span>${images.length} ${images.length === 1 ? 'recuerdo' : 'recuerdos'}</span>
+            </span>
+          </div>
+          <div class="masonry-flex mt-6"></div>`;
+        const grid = section.querySelector('.masonry-flex');
+
+        if (images.length === 0) {
+          grid.innerHTML = `<div class="empty-folder">Esta carpeta aún está vacía. Sube tus fotos a <strong>imagenes/${key}/</strong> y agrégalas en <strong>memorias.json</strong>.</div>`;
+        } else {
+          images.forEach((item, index) => grid.appendChild(buildMemoryCard(item, key, folder, index)));
+          layoutMasonryGrid(grid);
+        }
+        container.appendChild(section);
+      });
+
+      updateMemoryCounts(data);
+    }
+
+    function buildMemoryCard(item, folderKey, folder, index) {
+      const title = item.titulo || `Recuerdo en ${folder.nombre || folderKey}`;
+      const caption = item.caption || 'Un recuerdo guardado en el Pensieve.';
+      const article = document.createElement('article');
+      article.className = 'masonry-item memory-card group relative bg-[#f4ebd0] text-[#2b1b17] border-2 border-[#d4af37] hover:border-[#740001] rounded-xl overflow-hidden shadow-[0_8px_25px_rgba(0,0,0,0.5)] hover:shadow-[0_12px_35px_rgba(212,175,55,0.35)] transition-all duration-300 cursor-pointer transform hover:-translate-y-1.5';
+      article.dataset.order = index;
+      article.dataset.audio = item.audio || '';
+      article.dataset.caption = item.caption || '';
+      article.dataset.date = item.fecha || '';
+      article.dataset.destination = folderKey;
+      article.dataset.location = item.lugar || '';
+      article.dataset.title = title;
+      article.addEventListener('click', () => openLightbox(article));
+
+      const aspects = ['aspect-[4/5]', 'aspect-square', 'aspect-[3/4]', 'aspect-[4/3]'];
+      const width = Number(item.ancho);
+      const height = Number(item.alto);
+      const hasDimensions = width > 0 && height > 0;
+      const aspect = hasDimensions ? '' : aspects[index % aspects.length];
+      const aspectStyle = hasDimensions ? ` style="aspect-ratio:${width} / ${height}"` : '';
+      const sizeAttributes = hasDimensions ? ` width="${width}" height="${height}"` : '';
+      const sello = item.sello || folder.nombre || FOLDER_SHORT[folderKey] || folderKey;
+
+      article.innerHTML = `
+        <div class="relative overflow-hidden ${aspect} bg-[#1a0b0b]"${aspectStyle}>
+          <img alt="${escapeHtml(item.alt || title)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter sepia-[0.15]" data-alt="${escapeHtml(item.alt || title)}"${sizeAttributes} decoding="async" loading="lazy"/>
+          <div class="absolute top-3 left-3 bg-gradient-to-r from-[#d4af37] to-[#b8860b] text-[#241a00] font-cinzel text-xs px-2.5 py-0.5 rounded-full font-bold shadow border border-[#ffe088]">${escapeHtml(sello)}</div>
+        </div>
+        <div class="p-4 bg-gradient-to-b from-[#f4ebd0] to-[#ede0c8]">
+          <span class="font-cinzel text-[#740001] text-[11px] font-bold tracking-wider uppercase block mb-1">${escapeHtml(FOLDER_SHORT[folderKey] || folder.nombre || folderKey)}${item.fecha ? ' • ' + escapeHtml(item.fecha) : ''}</span>
+          <h3 class="font-headline-sm text-xl text-[#1f1610] font-bold group-hover:text-[#740001] transition-colors">${escapeHtml(title)}</h3>
+          <p class="font-handwriting text-xl text-[#3e2723] line-clamp-2 mt-1">"${escapeHtml(caption)}"</p>
+          <div class="mt-3 pt-2 border-t border-[#d4af37]/40 flex items-center justify-between text-xs text-[#6e5d4e]">
+            <span class="flex items-center gap-1 font-cinzel font-semibold"><span class="material-symbols-outlined text-sm text-[#740001]">headphones</span> Nota Mágica</span>
+            <span class="text-[#740001] font-cinzel font-bold flex items-center gap-0.5">Explorar <span class="material-symbols-outlined text-xs">arrow_forward</span></span>
+          </div>
+        </div>`;
+
+      const image = article.querySelector('img');
+      image.src = item.src || FALLBACK_IMG;
+      image.addEventListener('error', () => { image.src = FALLBACK_IMG; }, { once: true });
+      return article;
+    }
+
+    function masonryColumnCount() {
+      if (window.innerWidth >= 1280) return 4;
+      if (window.innerWidth >= 1024) return 3;
+      if (window.innerWidth >= 640) return 2;
+      return 1;
+    }
+
+    function layoutMasonryGrid(grid) {
+      if (!grid || !grid.isConnected || grid.clientWidth === 0) return;
+      const cards = Array.from(grid.querySelectorAll('.memory-card'));
+      if (cards.length === 0) return;
+
+      cards.sort((a, b) => Number(a.dataset.order || 0) - Number(b.dataset.order || 0));
+      const count = Math.min(masonryColumnCount(), cards.length);
+      const columns = Array.from({ length: count }, () => {
+        const column = document.createElement('div');
+        column.className = 'masonry-col';
+        return column;
+      });
+
+      cards.forEach((card, index) => columns[index % count].appendChild(card));
+      grid.replaceChildren(...columns);
+    }
+
+    function layoutAllMasonry() {
+      document.querySelectorAll('.masonry-flex').forEach(layoutMasonryGrid);
+    }
+
+    function getFeaturedMemories(data) {
+      const buckets = [];
+      FOLDER_ORDER.forEach(key => {
+        const folder = data.carpetas?.[key];
+        if (!folder) return;
+        const memories = (folder.imagenes || []).map(item => ({ ...item, destino: key, carpeta: folder.nombre || key }));
+        const isRemote = item => /^https?:\/\//i.test(item.src || '');
+        const local = memories.filter(item => !isRemote(item));
+        const remote = memories.filter(isRemote);
+        const localFeatured = local.filter(item => item.destacada);
+        const remoteFeatured = remote.filter(item => item.destacada);
+        const ordered = localFeatured.length && remoteFeatured.length
+          ? [localFeatured[0], remoteFeatured[0], ...localFeatured.slice(1), ...remoteFeatured.slice(1), ...local.filter(item => !item.destacada), ...remote.filter(item => !item.destacada)]
+          : [...localFeatured, ...remoteFeatured, ...local.filter(item => !item.destacada), ...remote.filter(item => !item.destacada)];
+        if (ordered.length) buckets.push(ordered);
+      });
+
+      const picks = [];
+      for (let round = 0; round < 2 && picks.length < 12; round++) {
+        for (const bucket of buckets) {
+          if (picks.length >= 12) break;
+          if (bucket[round]) picks.push(bucket[round]);
+        }
+      }
+      return picks;
+    }
+
+    function renderOrbit(data) {
+      const stage = document.getElementById('orbit-stage');
+      if (!stage) return;
+      stage.innerHTML = '';
+      orbitCards = [];
+
+      getFeaturedMemories(data).forEach((item, index) => {
+        const title = item.titulo || `Recuerdo en ${item.carpeta}`;
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'orbit-card';
+        button.setAttribute('aria-label', `Abrir recuerdo: ${title}`);
+        button.dataset.audio = item.audio || '';
+        button.dataset.caption = item.caption || '';
+        button.dataset.date = item.fecha || '';
+        button.dataset.destination = item.destino;
+        button.dataset.location = item.lugar || '';
+        button.dataset.title = title;
+        button.innerHTML = `
+          <span class="orbit-card__inner">
+            <span class="orbit-card__photo"><img alt="${escapeHtml(item.alt || title)}" data-alt="${escapeHtml(item.alt || title)}" decoding="async" loading="lazy"/></span>
+            <span class="orbit-card__label">${escapeHtml(FOLDER_SHORT[item.destino] || item.carpeta)}</span>
+            <span class="orbit-card__seal">✦ ${String(index + 1).padStart(2, '0')}</span>
+          </span>`;
+
+        const image = button.querySelector('img');
+        image.src = item.src || FALLBACK_IMG;
+        image.addEventListener('error', () => { image.src = FALLBACK_IMG; }, { once: true });
+
+        button.addEventListener('click', () => openLightbox(button));
+        button.addEventListener('mouseenter', () => { orbitPaused = true; });
+        button.addEventListener('mouseleave', () => { orbitPaused = false; });
+        button.addEventListener('focus', () => { orbitPaused = true; });
+        button.addEventListener('blur', () => { orbitPaused = false; });
+
+        stage.appendChild(button);
+        orbitCards.push(button);
+      });
+
+      requestAnimationFrame(() => {
+        measureOrbit();
+        if (prefersReducedMotion) {
+          orbitTime = 0;
+          positionOrbit();
+        } else {
+          startOrbit();
+        }
+      });
+    }
+
+    function measureOrbit() {
+      const stage = document.getElementById('orbit-stage');
+      if (!stage) return;
+      const rect = stage.getBoundingClientRect();
+      const size = Math.max(1, Math.min(rect.width, rect.height));
+      orbitRadiusX = size * 0.39;
+      orbitRadiusY = size * 0.33;
+    }
+
+    function positionOrbit() {
+      const total = orbitCards.length;
+      if (!total) return;
+      orbitCards.forEach((card, index) => {
+        const angle = orbitTime * 0.00011 + index * (Math.PI * 2 / total);
+        const x = Math.cos(angle) * orbitRadiusX;
+        const y = Math.sin(angle) * orbitRadiusY;
+        const depth = (Math.sin(angle) + 1) / 2;
+        const scale = 0.78 + depth * 0.32;
+        const rotation = Math.cos(angle) * 3;
+        card.style.transform = `translate(-50%, -50%) translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) scale(${scale.toFixed(3)}) rotate(${rotation.toFixed(1)}deg)`;
+        card.style.zIndex = String(Math.round(10 + depth * 30));
+        card.style.opacity = (0.72 + depth * 0.28).toFixed(2);
+      });
+    }
+
+    function startOrbit() {
+      if (orbitStarted) return;
+      orbitStarted = true;
+      let last = performance.now();
+      function frame(now) {
+        const delta = Math.min(48, now - last);
+        last = now;
+        if (!orbitPaused) orbitTime += delta;
+        positionOrbit();
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+
+    // 1. Anniversary Vault Logic
+    function handleUnlock(e) {
+      e.preventDefault();
+      const input = document.getElementById('anniv-date').value.toLowerCase().trim();
+      const errorMsg = document.getElementById('vault-error');
+
+      // Validation accepting "noviembre 25", "25 de noviembre", "25/11", "25-11", "25 nov"
+      if (
+        input.includes('25') && (input.includes('nov') || input.includes('11'))
+      ) {
+        unlockDirectly();
+      } else {
+        errorMsg.classList.remove('hidden');
+      }
+    }
+
+    function unlockDirectly() {
+      isVaultUnlocked = true;
+      const modal = document.getElementById('anniversary-modal');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 500);
+      showSparkleNotification("¡Bóveda Desbloqueada con Éxito!");
+    }
+
+    function openAnniversaryModal() {
+      const modal = document.getElementById('anniversary-modal');
+      modal.classList.remove('hidden', 'pointer-events-none');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+      }, 10);
+    }
+
+    // 2. Portkey Golden Transition & View Switching
+    function triggerPortkeyTransition(callback) {
+      const overlay = document.getElementById('portkey-overlay');
+      overlay.classList.remove('pointer-events-none');
+      overlay.classList.remove('opacity-0');
+      overlay.classList.add('opacity-100');
+
+      setTimeout(() => {
+        if (callback) callback();
+        setTimeout(() => {
+          overlay.classList.remove('opacity-100');
+          overlay.classList.add('opacity-0');
+          overlay.classList.add('pointer-events-none');
+        }, 500);
+      }, 700);
+    }
+
+    function executePortkeyNav(filterKey) {
+      triggerPortkeyTransition(() => {
+        // Handle random compass spin
+        if (filterKey === 'random') {
+          const destinations = FOLDER_ORDER.length ? FOLDER_ORDER : ['caracas'];
+          filterKey = destinations[Math.floor(Math.random() * destinations.length)];
+        }
+
+        // Show gallery view and hide lamp view
+        document.getElementById('lamp-stage-view').classList.add('hidden');
+        const gallery = document.getElementById('gallery-stage-view');
+        gallery.classList.remove('hidden');
+        setTimeout(() => {
+          gallery.classList.remove('opacity-0');
+        }, 50);
+
+        // Apply filter
+        filterGallery(filterKey);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    function switchToLampView() {
+      triggerPortkeyTransition(() => {
+        const gallery = document.getElementById('gallery-stage-view');
+        gallery.classList.add('opacity-0');
+        setTimeout(() => {
+          gallery.classList.add('hidden');
+          const lamp = document.getElementById('lamp-stage-view');
+          lamp.classList.remove('hidden');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 300);
+      });
+    }
+
+    // 3. Search and Filtering Logic
+    function getFilterHeading(filterKey) {
+      if (filterKey === 'all') {
+        return { title: 'Pensieve: Memorias Mágicas', breadcrumb: 'Todas las Memorias Mágicas' };
+      }
+      const folder = galleryData?.carpetas?.[filterKey] || {};
+      const name = folder.nombre || FOLDER_SHORT[filterKey] || filterKey;
+      return { title: `Pensieve: Memorias de ${name}`, breadcrumb: name };
+    }
+
+    function filterGallery(filterKey) {
+      currentFilter = filterKey;
+      if (!galleryData) return;
+
+      // Update gallery title and breadcrumbs
+      const conf = getFilterHeading(filterKey);
+      document.getElementById('gallery-main-heading').textContent = conf.title;
+      document.getElementById('gallery-breadcrumb-active').textContent = conf.breadcrumb;
+
+      // Update active filter chip buttons
+      document.querySelectorAll('.gallery-filter-btn').forEach(btn => {
+        const key = btn.getAttribute('data-filter');
+        if (key === filterKey) {
+          btn.className = 'gallery-filter-btn flex items-center gap-2 px-4 py-1.5 rounded-lg bg-gradient-to-r from-[#d4af37] to-[#b8860b] text-[#241a00] font-cinzel text-xs md:text-sm font-bold transition-all shrink-0 shadow';
+        } else {
+          btn.className = 'gallery-filter-btn flex items-center gap-2 px-4 py-1.5 rounded-lg bg-[#341814] text-[#f4ebd0] border border-[#d4af37]/40 hover:border-[#f2ca50] font-cinzel text-xs md:text-sm font-semibold transition-all shrink-0';
+        }
+      });
+
+      // Show/hide complete folder sections and restore all their cards
+      document.querySelectorAll('.gallery-folder').forEach(section => {
+        const folderKey = section.dataset.folder;
+        const matches = filterKey === 'all' || folderKey === filterKey;
+        section.classList.toggle('hidden', !matches);
+        const folderCards = section.querySelectorAll('.memory-card');
+        folderCards.forEach(card => card.classList.remove('hidden'));
+        const count = section.querySelector('.folder-count span:last-child');
+        if (count) count.textContent = `${folderCards.length} ${folderCards.length === 1 ? 'recuerdo' : 'recuerdos'}`;
+      });
+
+      const searchPill = document.getElementById('search-active-pill');
+      if (searchPill) {
+        searchPill.classList.add('hidden');
+        searchPill.classList.remove('flex');
+      }
+
+      layoutAllMasonry();
+    }
+
+    function handleSearchSubmit() {
+      const rawQuery = document.getElementById('travel-quest-input').value.trim();
+      const query = rawQuery.toLowerCase();
+      if (!query) {
+        executePortkeyNav('all');
+        return;
+      }
+
+      // Check keywords
+      const matchedFolder = FOLDER_ORDER.find(key => {
+        const shortName = (FOLDER_SHORT[key] || '').toLowerCase();
+        return query.includes(key) || (shortName && query.includes(shortName));
+      });
+      if (query.includes('caracas') || query.includes('ávila') || query.includes('avila') || query.includes('palos grandes')) {
+        executePortkeyNav('caracas');
+      } else if (query.includes('colombia') || query.includes('bogot') || query.includes('monserrate') || query.includes('candelaria') || query.includes('usaquén')) {
+        executePortkeyNav('bogota');
+      } else if (query.includes('caripe') || query.includes('guácharo') || query.includes('guacharo') || query.includes('fresa')) {
+        executePortkeyNav('caripe');
+      } else if (query.includes('cumaná') || query.includes('cumana') || query.includes('mochima') || query.includes('castillo') || query.includes('playa')) {
+        executePortkeyNav('cumana');
+      } else if (query.includes('cueva') || query.includes('gruta') || query.includes('caverna')) {
+        executePortkeyNav('cuevas');
+      } else if (query.includes('correr') || query.includes('carrera') || query.includes('kilómetro') || query.includes('kilometro')) {
+        executePortkeyNav('corriendo');
+      } else if (matchedFolder) {
+        executePortkeyNav(matchedFolder);
+      } else {
+        // Free text search across all folder cards
+        triggerPortkeyTransition(() => {
+          document.getElementById('lamp-stage-view').classList.add('hidden');
+          const gallery = document.getElementById('gallery-stage-view');
+          gallery.classList.remove('hidden');
+          gallery.classList.remove('opacity-0');
+
+          document.getElementById('search-active-pill').classList.remove('hidden');
+          document.getElementById('search-active-pill').classList.add('flex');
+          document.getElementById('search-term-text').textContent = rawQuery;
+
+          const cards = document.querySelectorAll('.memory-card');
+          cards.forEach(card => {
+            const title = (card.getAttribute('data-title') || '').toLowerCase();
+            const caption = (card.getAttribute('data-caption') || '').toLowerCase();
+            const location = (card.getAttribute('data-location') || '').toLowerCase();
+            const destination = card.getAttribute('data-destination') || '';
+            const destinationName = (FOLDER_SHORT[destination] || '').toLowerCase();
+
+            if (title.includes(query) || caption.includes(query) || location.includes(query) || destinationName.includes(query)) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          });
+
+          let anyVisible = 0;
+          document.querySelectorAll('.gallery-folder').forEach(section => {
+            const visible = section.querySelectorAll('.memory-card:not(.hidden)').length;
+            section.classList.toggle('hidden', visible === 0);
+            const count = section.querySelector('.folder-count span:last-child');
+            if (count) count.textContent = `${visible} ${visible === 1 ? 'recuerdo' : 'recuerdos'}`;
+            anyVisible += visible;
+          });
+
+          document.getElementById('gallery-main-heading').textContent = anyVisible
+            ? `Pensieve: Resultados para "${rawQuery}"`
+            : `Pensieve: Sin resultados para "${rawQuery}"`;
+          document.getElementById('gallery-breadcrumb-active').textContent = `Búsqueda: ${rawQuery}`;
+          layoutAllMasonry();
+        });
+      }
+    }
+
+    function clearSearchFilter() {
+      document.getElementById('search-active-pill').classList.add('hidden');
+      document.getElementById('search-active-pill').classList.remove('flex');
+      document.getElementById('travel-quest-input').value = '';
+      filterGallery('all');
+    }
+
+    // 4. Lightbox Handlers
+    function openLightbox(element) {
+      const modal = document.getElementById('lightbox-modal');
+      const img = element.querySelector('img');
+      const title = element.getAttribute('data-title');
+      const caption = element.getAttribute('data-caption');
+      const date = element.getAttribute('data-date');
+      const location = element.getAttribute('data-location');
+      const audio = element.getAttribute('data-audio');
+      const destination = element.getAttribute('data-destination');
+
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox-img').setAttribute('data-alt', img.getAttribute('data-alt') || '');
+      document.getElementById('lightbox-title').textContent = title;
+      document.getElementById('lightbox-caption').textContent = `"${caption || 'Un recuerdo guardado en el Pensieve.'}"`;
+      document.getElementById('lightbox-date').textContent = date;
+      document.getElementById('lightbox-location').textContent = location;
+      document.getElementById('lightbox-audio').textContent = audio || 'Eco de risas lejanas';
+      document.getElementById('lightbox-badge').textContent = (FOLDER_SHORT[destination] || destination || 'Memoria').toUpperCase();
+
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+      }, 10);
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightbox-modal');
+      modal.classList.add('opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
+    }
+
+    // Keyboard support (Escape to close lightbox)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+
+    // Lightbox backdrop click to close
+    document.getElementById('lightbox-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'lightbox-modal') {
+        closeLightbox();
+      }
+    });
+
+    // 5. Ambient Micro-Interactions
+    function toggleMusicMagic() {
+      showSparkleNotification("♪ Sonata de recuerdos resonando suavemente...");
+    }
+
+    function showSparkleNotification(text) {
+      const toast = document.createElement('div');
+      toast.className = 'fixed bottom-6 right-6 z-[120] bg-[#23120e] border border-[#d4af37] text-[#f2ca50] px-4 py-3 rounded-lg shadow-2xl flex items-center gap-2 transform translate-y-4 opacity-0 transition-all duration-300 font-cinzel text-xs font-semibold';
+      toast.innerHTML = `<span class="material-symbols-outlined text-[#f2ca50] text-base">auto_awesome</span><span>${text}</span>`;
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-4', 'opacity-0');
+      }, 50);
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-4', 'opacity-0');
+        setTimeout(() => toast.remove(), 400);
+      }, 3000);
+    }
+
+    // 6. Magic cursor: Harry volando en escoba
+    function initMagicCursor() {
+      const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      if (!finePointer || prefersReducedMotion) return;
+
+      const cursor = document.getElementById('harry-cursor');
+      const canvas = document.getElementById('magic-trail');
+      if (!cursor || !canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      let dpr = Math.min(window.devicePixelRatio || 1, 2);
+      let width = window.innerWidth;
+      let height = window.innerHeight;
+      let targetX = width / 2;
+      let targetY = height / 2;
+      let x = targetX;
+      let y = targetY;
+      let velocityX = 0;
+      let direction = 1;
+      let visible = false;
+      let lastTime = performance.now();
+      let cursorHalfWidth = 36;
+      let cursorHalfHeight = 24;
+      const particles = [];
+
+      function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        cursorHalfWidth = (cursor.offsetWidth || 72) / 2;
+        cursorHalfHeight = (cursor.offsetHeight || 48) / 2;
+      }
+
+      function spawnParticles(cx, cy, amount, burst) {
+        for (let i = 0; i < amount; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = burst ? 1.4 + Math.random() * 3.2 : 0.2 + Math.random() * 0.9;
+          particles.push({
+            x: cx + (Math.random() - 0.5) * (burst ? 12 : 8),
+            y: cy + (Math.random() - 0.5) * (burst ? 12 : 8),
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed - (burst ? 0.9 : 0.15),
+            life: 1,
+            decay: burst ? 0.018 + Math.random() * 0.016 : 0.025 + Math.random() * 0.022,
+            size: burst ? 1.5 + Math.random() * 2.4 : 0.8 + Math.random() * 1.7
+          });
+        }
+        if (particles.length > 140) particles.splice(0, particles.length - 140);
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.globalCompositeOperation = 'lighter';
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const particle = particles[i];
+          particle.x += particle.vx;
+          particle.y += particle.vy;
+          particle.vy += 0.012;
+          particle.vx *= 0.985;
+          particle.vy *= 0.985;
+          particle.life -= particle.decay;
+          if (particle.life <= 0) {
+            particles.splice(i, 1);
+            continue;
+          }
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(255, 224, 136, ${(particle.life * 0.9).toFixed(3)})`;
+          ctx.shadowColor = 'rgba(242, 202, 80, 0.9)';
+          ctx.shadowBlur = 8;
+          ctx.arc(particle.x, particle.y, particle.size * particle.life, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.shadowBlur = 0;
+        ctx.globalCompositeOperation = 'source-over';
+      }
+
+      function animate(now) {
+        const delta = Math.min(40, now - lastTime);
+        lastTime = now;
+        const dx = targetX - x;
+        const dy = targetY - y;
+        const easing = Math.min(1, delta * 0.018);
+        x += dx * easing;
+        y += dy * easing;
+        velocityX = velocityX * 0.82 + dx * 0.18;
+        if (Math.abs(velocityX) > 0.3) direction = velocityX < 0 ? -1 : 1;
+        const tilt = Math.max(-14, Math.min(14, velocityX * 0.55)) * direction;
+        cursor.style.transform = `translate3d(${(x - cursorHalfWidth).toFixed(1)}px, ${(y - cursorHalfHeight).toFixed(1)}px, 0) rotate(${tilt.toFixed(1)}deg) scaleX(${direction})`;
+        if (Math.hypot(dx, dy) > 0.8) {
+          spawnParticles(x + (direction > 0 ? -26 : 26), y + 6, 1, false);
+        }
+        draw();
+        requestAnimationFrame(animate);
+      }
+
+      window.addEventListener('resize', resize, { passive: true });
+      window.addEventListener('pointermove', event => {
+        if (event.pointerType === 'touch') return;
+        targetX = event.clientX;
+        targetY = event.clientY;
+        if (!visible) {
+          visible = true;
+          document.body.classList.add('magic-cursor-on');
+          cursor.classList.add('is-visible');
+        }
+      }, { passive: true });
+      window.addEventListener('pointerdown', event => {
+        if (event.pointerType === 'touch') return;
+        spawnParticles(event.clientX, event.clientY, 16, true);
+      }, { passive: true });
+      document.addEventListener('mouseleave', () => {
+        visible = false;
+        cursor.classList.remove('is-visible');
+      });
+      document.addEventListener('mouseenter', () => {
+        if (visible) cursor.classList.add('is-visible');
+      });
+
+      resize();
+      requestAnimationFrame(animate);
+    }
+
+    initMagicCursor();
+    initMemorias();
+    window.addEventListener('resize', () => {
+      measureOrbit();
+      layoutAllMasonry();
+      if (prefersReducedMotion) positionOrbit();
+    }, { passive: true });
+  </script>
+</body></html>
