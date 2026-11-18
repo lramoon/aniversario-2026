@@ -423,7 +423,7 @@
 <!-- ========================================== -->
 <!-- 1. ANNIVERSARY LOCK SCREEN / VAULT MODAL   -->
 <!-- ========================================== -->
-<div class="fixed inset-0 z-50 flex items-center justify-center bg-[#140707]/90 backdrop-blur-xl p-4 transition-all duration-500" id="anniversary-modal">
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-[#140707]/90 backdrop-blur-xl p-4 transition-all duration-500" id="anniversary-modal" role="dialog" aria-modal="true" aria-labelledby="vault-title" aria-describedby="vault-description">
 <div class="w-full max-w-md bg-[#f4ebd0] text-[#2b1b17] border-2 border-[#d4af37] p-7 md:p-9 rounded-xl shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(212,175,55,0.25)] relative overflow-hidden">
 <!-- Filigree Corner Accents -->
 <div class="absolute top-1 left-1 text-[#d4af37] text-xs pointer-events-none opacity-80 font-cinzel">✦ ❖</div>
@@ -439,32 +439,28 @@
 <span class="material-symbols-outlined text-3xl">lock_open</span>
 </div>
 <span class="font-cinzel text-[11px] font-bold tracking-[0.2em] text-[#740001] uppercase mb-1">Cámara de los Recuerdos Secretos</span>
-<h2 class="font-headline-lg text-2xl md:text-3xl text-[#1f1610] font-bold mb-2">Bóveda del Pensieve</h2>
-<p class="font-body-md text-[#3e2723] italic mb-6 px-2 text-base leading-relaxed">
+<h2 class="font-headline-lg text-2xl md:text-3xl text-[#1f1610] font-bold mb-2" id="vault-title">Bóveda del Pensieve</h2>
+<p class="font-body-md text-[#3e2723] italic mb-6 px-2 text-base leading-relaxed" id="vault-description">
   "Las palabras y los lazos más puros sellan este santuario. ¿Recuerdas el día sagrado de nuestro comienzo?"
 </p>
 <!-- Question Form -->
-<form class="w-full space-y-4" id="vault-form" onsubmit="handleUnlock(event)">
+<form class="w-full space-y-4" id="vault-form" novalidate>
 <div class="text-left">
 <label class="block font-cinzel text-xs font-bold text-[#740001] uppercase tracking-wider mb-1.5" for="anniv-date">
   Fecha de nuestro aniversario
 </label>
 <div class="relative flex items-center">
 <span class="material-symbols-outlined absolute left-3 text-[#8d160e] text-xl">calendar_month</span>
-<input class="w-full bg-[#fffdf6] border-2 border-[#c5a059] focus:border-[#740001] focus:ring-1 focus:ring-[#740001] rounded-lg py-2.5 pl-10 pr-4 text-[#1f1610] font-body-md font-semibold placeholder:text-[#998b75] text-base transition-all shadow-inner" id="anniv-date" placeholder="Ej. Noviembre 25 ó 25/11" required="" type="text"/>
+<input class="w-full bg-[#fffdf6] border-2 border-[#c5a059] focus:border-[#740001] focus:ring-1 focus:ring-[#740001] rounded-lg py-2.5 pl-10 pr-4 text-[#1f1610] font-body-md font-semibold placeholder:text-[#998b75] text-base transition-all shadow-inner" id="anniv-date" placeholder="25/11 o 25 de noviembre" required="" maxlength="40" autocomplete="off" autocapitalize="none" spellcheck="false" aria-invalid="false" aria-describedby="vault-error" type="text"/>
 </div>
-<p class="hidden text-xs text-[#740001] font-bold mt-1.5 flex items-center gap-1" id="vault-error">
-<span class="material-symbols-outlined text-sm">error</span> Fecha incorrecta. Intenta con "Noviembre 25" o usa Revelio.
+<p class="hidden text-xs text-[#740001] font-bold mt-1.5 flex items-center gap-1" id="vault-error" role="alert">
+<span class="material-symbols-outlined text-sm">error</span> Fecha incorrecta. Usa el formato 25/11 o 25 de noviembre.
 </p>
 </div>
-<div class="flex flex-col sm:flex-row gap-3 pt-2">
-<button class="flex-1 bg-gradient-to-r from-[#d4af37] via-[#f2ca50] to-[#b8860b] text-[#241a00] font-cinzel font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 hover:brightness-105 active:scale-95 transition-all shadow-[0_4px_15px_rgba(212,175,55,0.45)] border border-[#ffe088]" type="submit">
+<div class="flex flex-col pt-2">
+<button class="w-full bg-gradient-to-r from-[#d4af37] via-[#f2ca50] to-[#b8860b] text-[#241a00] font-cinzel font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 hover:brightness-105 active:scale-95 transition-all shadow-[0_4px_15px_rgba(212,175,55,0.45)] border border-[#ffe088]" type="submit">
 <span class="material-symbols-outlined text-lg">key</span>
 <span class="tracking-wider">Alohomora</span>
-</button>
-<button class="flex-1 bg-[#740001] hover:bg-[#8d160e] text-[#f2ca50] border border-[#d4af37] font-cinzel font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-all shadow-[0_4px_15px_rgba(116,0,1,0.35)] active:scale-95" onclick="unlockDirectly()" type="button">
-<span class="material-symbols-outlined text-lg">auto_fix_high</span>
-<span class="tracking-wider">✨ Revelio</span>
 </button>
 </div>
 </form>
@@ -495,8 +491,8 @@
 <a class="text-[#ede0c8] text-sm font-cinzel font-semibold hover:text-[#f2ca50] transition-colors" href="javascript:void(0)" onclick="openAnniversaryModal()">Bóveda Secreta</a>
 </div>
 <div class="flex gap-2.5 shrink-0">
-<button class="flex min-w-[88px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-gradient-to-r from-[#d4af37] to-[#b8860b] text-[#241a00] text-xs font-cinzel font-bold tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-[0_0_15px_rgba(212,175,55,0.35)]" onclick="executePortkeyNav('all')">
-<span>✨ Revelio</span>
+<button class="flex min-w-[88px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-gradient-to-r from-[#d4af37] to-[#b8860b] text-[#241a00] text-xs font-cinzel font-bold tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-[0_0_15px_rgba(212,175,55,0.35)]" onclick="executePortkeyNav('all')" title="Ir a la galería">
+<span>✨ Galería</span>
 </button>
 <button id="music-toggle-btn" class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 bg-[#3d1512] border border-[#d4af37]/40 text-[#f2ca50] gap-2 text-xs font-bold px-3 hover:bg-[#5a201c] transition-all shadow-sm" onclick="toggleMusicMagic()" title="Reproducir melodía del Pensieve" aria-label="Reproducir melodía del Pensieve" aria-pressed="false">
 <span class="text-[#f2ca50]" data-icon="Champagne">
@@ -746,16 +742,6 @@
 <p class="font-handwriting text-2xl text-[#2b1b17] leading-relaxed pt-2" id="lightbox-caption">
   "Fragmento romántico escrito en pergamino..."
 </p>
-</div>
-<!-- Audio Note Indicator -->
-<div class="mt-6 flex items-center gap-3 p-3 rounded-lg bg-[#ede0c8] border border-[#d4af37]/60">
-<div class="w-8 h-8 rounded-full bg-[#740001] text-[#f2ca50] flex items-center justify-center shadow">
-<span class="material-symbols-outlined text-base">graphic_eq</span>
-</div>
-<div>
-<p class="text-xs font-cinzel font-bold text-[#1f1610]">Resonancia Sonora</p>
-<p class="text-xs text-[#6e5d4e] font-serif italic" id="lightbox-audio">Viento andino y campanadas</p>
-</div>
 </div>
 </div>
 <!-- Footer Actions inside Modal -->
@@ -1156,36 +1142,132 @@
     }
 
     // 1. Anniversary Vault Logic
-    function handleUnlock(e) {
-      e.preventDefault();
-      const input = document.getElementById('anniv-date').value.toLowerCase().trim();
-      const errorMsg = document.getElementById('vault-error');
+    const ANNIVERSARY_DATE = Object.freeze({ dia: 25, mes: 11 });
+    const MONTH_ALIASES = Object.freeze({ 11: ['nov', 'noviembre'] });
 
-      // Validation accepting "noviembre 25", "25 de noviembre", "25/11", "25-11", "25 nov"
-      if (
-        input.includes('25') && (input.includes('nov') || input.includes('11'))
-      ) {
-        unlockDirectly();
-      } else {
-        errorMsg.classList.remove('hidden');
+    function normalizeVaultInput(value) {
+      return String(value ?? '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[^a-z0-9\s\/-]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function isValidAnniversaryDate(value) {
+      const input = normalizeVaultInput(value);
+      if (!input || input.length > 40) return false;
+
+      const dia = ANNIVERSARY_DATE.dia;
+      const mes = ANNIVERSARY_DATE.mes;
+      const alias = (MONTH_ALIASES[mes] || []).join('|');
+      const patrones = [
+        new RegExp(`^${dia}\\s*[\\/\\-]\\s*${mes}$`),
+        new RegExp(`^${dia}\\s+${mes}$`),
+        new RegExp(`^${dia}\\s*(?:de\\s*)?(?:${alias})$`),
+        new RegExp(`^(?:${alias})\\s*${dia}$`)
+      ];
+      return patrones.some(patron => patron.test(input));
+    }
+
+    function clearVaultError() {
+      const input = document.getElementById('anniv-date');
+      const error = document.getElementById('vault-error');
+      if (error) error.classList.add('hidden');
+      if (input) input.setAttribute('aria-invalid', 'false');
+    }
+
+    function showVaultError() {
+      const input = document.getElementById('anniv-date');
+      const error = document.getElementById('vault-error');
+      if (error) error.classList.remove('hidden');
+      if (input) {
+        input.setAttribute('aria-invalid', 'true');
+        input.focus({ preventScroll: true });
+        input.select();
       }
     }
 
-    function unlockDirectly() {
+    function handleUnlock(e) {
+      e.preventDefault();
+      if (isVaultUnlocked) return;
+      const input = document.getElementById('anniv-date');
+      if (!input) return;
+
+      if (!isValidAnniversaryDate(input.value)) {
+        showVaultError();
+        return;
+      }
+
+      clearVaultError();
+      unlockVault();
+    }
+
+    function unlockVault() {
+      if (isVaultUnlocked) return;
       isVaultUnlocked = true;
       const modal = document.getElementById('anniversary-modal');
-      modal.classList.add('opacity-0', 'pointer-events-none');
-      setTimeout(() => {
-        modal.classList.add('hidden');
-      }, 500);
+      if (modal) {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        setTimeout(() => modal.classList.add('hidden'), 500);
+      }
       showSparkleNotification("¡Bóveda Desbloqueada con Éxito!");
     }
 
-    function openAnniversaryModal() {
+    function requireVault() {
+      if (isVaultUnlocked) return true;
+      openAnniversaryModal();
+      return false;
+    }
+
+    function focusVaultInput() {
+      if (isVaultUnlocked) return;
+      const input = document.getElementById('anniv-date');
+      if (input) setTimeout(() => input.focus({ preventScroll: true }), 50);
+    }
+
+    function trapVaultFocus(e) {
+      if (isVaultUnlocked || e.key !== 'Tab') return;
       const modal = document.getElementById('anniversary-modal');
+      if (!modal) return;
+      const focusables = Array.from(modal.querySelectorAll('input, button:not([disabled]), a[href]'))
+        .filter(element => element.offsetParent !== null);
+      if (!focusables.length) return;
+
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
+    function initVaultGate() {
+      const form = document.getElementById('vault-form');
+      const input = document.getElementById('anniv-date');
+      const modal = document.getElementById('anniversary-modal');
+      if (form) form.addEventListener('submit', handleUnlock);
+      if (input) {
+        input.addEventListener('input', () => {
+          clearVaultError();
+        });
+      }
+      if (modal) modal.addEventListener('keydown', trapVaultFocus);
+      focusVaultInput();
+    }
+
+    function openAnniversaryModal() {
+      if (isVaultUnlocked) return;
+      const modal = document.getElementById('anniversary-modal');
+      if (!modal) return;
       modal.classList.remove('hidden', 'pointer-events-none');
       setTimeout(() => {
         modal.classList.remove('opacity-0');
+        focusVaultInput();
       }, 10);
     }
 
@@ -1207,6 +1289,7 @@
     }
 
     function executePortkeyNav(filterKey) {
+      if (!requireVault()) return;
       triggerPortkeyTransition(() => {
         // Handle random compass spin
         if (filterKey === 'random') {
@@ -1229,6 +1312,7 @@
     }
 
     function switchToLampView() {
+      if (!requireVault()) return;
       triggerPortkeyTransition(() => {
         const gallery = document.getElementById('gallery-stage-view');
         gallery.classList.add('opacity-0');
@@ -1252,6 +1336,7 @@
     }
 
     function filterGallery(filterKey) {
+      if (!requireVault()) return;
       currentFilter = filterKey;
       if (!galleryData) return;
 
@@ -1291,6 +1376,7 @@
     }
 
     function handleSearchSubmit() {
+      if (!requireVault()) return;
       const rawQuery = document.getElementById('travel-quest-input').value.trim();
       const query = rawQuery.toLowerCase();
       if (!query) {
@@ -1371,13 +1457,13 @@
 
     // 4. Lightbox Handlers
     function openLightbox(element) {
+      if (!requireVault()) return;
       const modal = document.getElementById('lightbox-modal');
       const img = element.querySelector('img');
       const title = element.getAttribute('data-title');
       const caption = element.getAttribute('data-caption');
       const date = element.getAttribute('data-date');
       const location = element.getAttribute('data-location');
-      const audio = element.getAttribute('data-audio');
       const destination = element.getAttribute('data-destination');
 
       document.getElementById('lightbox-img').src = img.src;
@@ -1386,7 +1472,6 @@
       document.getElementById('lightbox-caption').textContent = `"${caption || 'Un recuerdo guardado en el Pensieve.'}"`;
       document.getElementById('lightbox-date').textContent = date;
       document.getElementById('lightbox-location').textContent = location;
-      document.getElementById('lightbox-audio').textContent = audio || 'Eco de risas lejanas';
       document.getElementById('lightbox-badge').textContent = (FOLDER_SHORT[destination] || destination || 'Memoria').toUpperCase();
 
       modal.classList.remove('hidden');
@@ -1419,6 +1504,7 @@
 
     // 5. Ambient Micro-Interactions
     function toggleMusicMagic() {
+      if (!requireVault()) return;
       const audio = document.getElementById('pensieve-audio');
       const button = document.getElementById('music-toggle-btn');
       const icon = button?.querySelector('.material-symbols-outlined');
@@ -1593,6 +1679,7 @@
     }
 
     initMagicCursor();
+    initVaultGate();
     initMemorias();
     window.addEventListener('resize', () => {
       measureOrbit();
