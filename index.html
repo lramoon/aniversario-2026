@@ -174,6 +174,38 @@
       aspect-ratio: 4 / 5 !important;
     }
 
+    /* Modal sizing and scroll isolation */
+    #anniversary-modal,
+    #lightbox-modal {
+      overscroll-behavior: contain;
+    }
+    .modal-panel {
+      max-height: calc(100vh - 2rem);
+      max-height: min(921px, calc(100dvh - 2rem));
+      overscroll-behavior: contain;
+    }
+    .modal-scroll {
+      min-height: 0;
+      overscroll-behavior: contain;
+    }
+    .lightbox-photo {
+      flex: none;
+    }
+    @media (max-width: 767px) {
+      .lightbox-modal-scroll {
+        flex: 1 1 auto;
+      }
+      .lightbox-photo {
+        height: 38vh;
+        height: 38dvh;
+        max-height: 320px;
+      }
+      .lightbox-photo img {
+        height: 100%;
+        max-height: none;
+      }
+    }
+
     /* Antique parchment scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
@@ -424,7 +456,7 @@
 <!-- 1. ANNIVERSARY LOCK SCREEN / VAULT MODAL   -->
 <!-- ========================================== -->
 <div class="fixed inset-0 z-50 flex items-center justify-center bg-[#140707]/90 backdrop-blur-xl p-4 transition-all duration-500" id="anniversary-modal" role="dialog" aria-modal="true" aria-labelledby="vault-title" aria-describedby="vault-description">
-<div class="w-full max-w-md bg-[#f4ebd0] text-[#2b1b17] border-2 border-[#d4af37] p-7 md:p-9 rounded-xl shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(212,175,55,0.25)] relative overflow-hidden">
+<div class="modal-panel modal-scroll w-full max-w-md bg-[#f4ebd0] text-[#2b1b17] border-2 border-[#d4af37] p-7 md:p-9 rounded-xl shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(212,175,55,0.25)] relative overflow-x-hidden overflow-y-auto">
 <!-- Filigree Corner Accents -->
 <div class="absolute top-1 left-1 text-[#d4af37] text-xs pointer-events-none opacity-80 font-cinzel">✦ ❖</div>
 <div class="absolute top-1 right-1 text-[#d4af37] text-xs pointer-events-none opacity-80 font-cinzel">❖ ✦</div>
@@ -704,13 +736,13 @@
 <!-- 4. FULL-SCREEN LIGHTBOX MODAL (Warm Aged Parchment & Polished Wood) -->
 <!-- ========================================== -->
 <div class="fixed inset-0 z-50 hidden opacity-0 bg-[#140707]/95 backdrop-blur-2xl transition-opacity duration-300 flex items-center justify-center p-4" id="lightbox-modal">
-<div class="relative w-full max-w-4xl bg-[#f4ebd0] border-2 border-[#d4af37] rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_40px_rgba(212,175,55,0.3)] flex flex-col md:flex-row max-h-[921px]">
+<div class="modal-panel relative w-full max-w-4xl bg-[#f4ebd0] border-2 border-[#d4af37] rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_40px_rgba(212,175,55,0.3)] flex flex-col md:flex-row">
 <!-- Close Button -->
 <button class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-[#1a0b0b]/80 text-[#f2ca50] hover:text-white border border-[#d4af37] flex items-center justify-center transition-all shadow-md" onclick="closeLightbox()">
 <span class="material-symbols-outlined text-2xl">close</span>
 </button>
 <!-- Lightbox Image Section -->
-<div class="md:w-3/5 bg-[#140707] flex items-center justify-center relative overflow-hidden">
+<div class="lightbox-photo md:w-3/5 bg-[#140707] flex items-center justify-center relative overflow-hidden">
 <img alt="Pensieve High Resolution Memory" class="w-full h-full object-contain max-h-[512px] md:max-h-[870px]" id="lightbox-img" src=""/>
 <div class="absolute bottom-3 left-3 bg-[#1a0b0b]/85 text-[#f2ca50] font-cinzel text-xs px-3 py-1 rounded-full border border-[#d4af37]/60 backdrop-blur-sm flex items-center gap-1.5 shadow">
 <span class="material-symbols-outlined text-sm">visibility</span>
@@ -718,7 +750,7 @@
 </div>
 </div>
 <!-- Lightbox Info / Parchment Journal Section with Espresso Text -->
-<div class="md:w-2/5 p-6 md:p-8 flex flex-col justify-between overflow-y-auto bg-gradient-to-b from-[#f4ebd0] to-[#ede0c8] border-t md:border-t-0 md:border-l-2 border-[#d4af37]/60 text-[#2b1b17]">
+<div class="modal-scroll lightbox-modal-scroll md:w-2/5 p-6 md:p-8 flex flex-col justify-between overflow-y-auto bg-gradient-to-b from-[#f4ebd0] to-[#ede0c8] border-t md:border-t-0 md:border-l-2 border-[#d4af37]/60 text-[#2b1b17]">
 <div>
 <!-- Badge & Location -->
 <div class="flex items-center gap-2 mb-3">
@@ -745,7 +777,7 @@
 </div>
 </div>
 <!-- Footer Actions inside Modal -->
-<div class="mt-8 pt-4 border-t border-[#d4af37]/40 flex items-center justify-between">
+<div class="sticky bottom-0 z-10 mt-8 pt-4 pb-1 border-t border-[#d4af37]/40 bg-[#ede0c8] flex items-center justify-between">
 <span class="font-cinzel text-[11px] text-[#740001] font-bold">Bóveda N° 724 • Lumos Eterno</span>
 <button class="text-xs text-[#740001] hover:text-black font-cinzel font-bold hover:underline" onclick="closeLightbox()">
   Cerrar Pergamino
@@ -769,6 +801,8 @@
     let orbitPaused = false;
     let orbitTime = 0;
     let orbitStarted = false;
+    let scrollLockOwner = null;
+    let scrollLockY = 0;
     let FOLDER_ORDER = ['caracas', 'bogota', 'caripe', 'cumana'];
     let FOLDER_SHORT = { caracas: 'Caracas', bogota: 'Bogotá', caripe: 'Caripe', cumana: 'Cumaná' };
     const FOLDER_ICONS = {
@@ -1142,6 +1176,30 @@
     }
 
     // 1. Anniversary Vault Logic
+    function lockScroll(owner) {
+      if (scrollLockOwner) return;
+      scrollLockOwner = owner;
+      scrollLockY = window.scrollY || document.documentElement.scrollTop || 0;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollLockY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function unlockScroll(owner) {
+      if (scrollLockOwner !== owner) return;
+      scrollLockOwner = null;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      requestAnimationFrame(() => window.scrollTo(0, scrollLockY));
+    }
+
     const ANNIVERSARY_DATE = Object.freeze({ dia: 25, mes: 11 });
     const MONTH_ALIASES = Object.freeze({ 11: ['nov', 'noviembre'] });
 
@@ -1207,6 +1265,7 @@
     function unlockVault() {
       if (isVaultUnlocked) return;
       isVaultUnlocked = true;
+      unlockScroll('vault');
       const modal = document.getElementById('anniversary-modal');
       if (modal) {
         modal.classList.add('opacity-0', 'pointer-events-none');
@@ -1247,6 +1306,7 @@
     }
 
     function initVaultGate() {
+      lockScroll('vault');
       const form = document.getElementById('vault-form');
       const input = document.getElementById('anniv-date');
       const modal = document.getElementById('anniversary-modal');
@@ -1264,6 +1324,7 @@
       if (isVaultUnlocked) return;
       const modal = document.getElementById('anniversary-modal');
       if (!modal) return;
+      lockScroll('vault');
       modal.classList.remove('hidden', 'pointer-events-none');
       setTimeout(() => {
         modal.classList.remove('opacity-0');
@@ -1458,6 +1519,7 @@
     // 4. Lightbox Handlers
     function openLightbox(element) {
       if (!requireVault()) return;
+      lockScroll('lightbox');
       const modal = document.getElementById('lightbox-modal');
       const img = element.querySelector('img');
       const title = element.getAttribute('data-title');
@@ -1482,9 +1544,11 @@
 
     function closeLightbox() {
       const modal = document.getElementById('lightbox-modal');
+      if (!modal || modal.classList.contains('hidden')) return;
       modal.classList.add('opacity-0');
       setTimeout(() => {
         modal.classList.add('hidden');
+        unlockScroll('lightbox');
       }, 300);
     }
 
