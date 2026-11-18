@@ -1993,6 +1993,20 @@
           "destacada": true,
           "ancho": 960,
           "alto": 1280
+        },
+        {
+          "src": "imagenes/radiante/IMG_8251.webp",
+          "alt": "Recuerdo de Radiante del 03 Oct 2026",
+          "titulo": "Radiante · 02",
+          "fecha": "03 Oct 2026",
+          "lugar": "",
+          "caption": "",
+          "audio": "",
+          "sello": "Radiante",
+          "destacada": false,
+          "ancho": 1200,
+          "alto": 1600,
+          "tomada": "2026-10-03"
         }
       ]
     },
