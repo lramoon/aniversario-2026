@@ -176,7 +176,8 @@
 
     /* Modal sizing and scroll isolation */
     #anniversary-modal,
-    #lightbox-modal {
+    #lightbox-modal,
+    #letter-modal {
       overscroll-behavior: contain;
     }
     .modal-panel {
@@ -188,11 +189,18 @@
       min-height: 0;
       overscroll-behavior: contain;
     }
+    .letter-paper {
+      background:
+        radial-gradient(circle at 18% 8%, rgba(255, 253, 246, 0.85), transparent 42%),
+        radial-gradient(circle at 82% 92%, rgba(197, 160, 89, 0.18), transparent 48%),
+        linear-gradient(135deg, #f7eed6, #ede0c8);
+    }
     .lightbox-photo {
       flex: none;
     }
     @media (max-width: 767px) {
-      .lightbox-modal-scroll {
+      .lightbox-modal-scroll,
+      .letter-modal-scroll {
         flex: 1 1 auto;
       }
       .lightbox-photo {
@@ -503,6 +511,36 @@
 </div>
 </div>
 <!-- ========================================== -->
+<!-- 1B. SEALED LOVE LETTER / PERGAMINO          -->
+<!-- ========================================== -->
+<div class="fixed inset-0 z-[60] hidden opacity-0 bg-[#140707]/95 backdrop-blur-2xl transition-opacity duration-300 flex items-center justify-center p-4" id="letter-modal" role="dialog" aria-modal="true" aria-labelledby="letter-title" aria-describedby="letter-text">
+<div class="modal-panel relative w-full max-w-2xl bg-[#f4ebd0] border-2 border-[#d4af37] rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_40px_rgba(212,175,55,0.3)] flex flex-col overflow-hidden">
+<div class="h-2 shrink-0 bg-gradient-to-r from-[#8d160e] via-[#d4af37] to-[#8d160e]"></div>
+<button class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-[#1a0b0b]/80 text-[#f2ca50] hover:text-white border border-[#d4af37] flex items-center justify-center transition-all shadow-md" onclick="closeLoveLetter()" aria-label="Cerrar carta">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+<div class="modal-scroll letter-modal-scroll letter-paper p-7 md:p-10 overflow-y-auto text-[#2b1b17]">
+<div class="text-center">
+<span class="font-cinzel text-[11px] font-bold uppercase tracking-[0.25em] text-[#740001]">Carta sellada con amor</span>
+<h2 class="font-headline-lg text-2xl md:text-4xl text-[#1f1610] font-bold mt-2 mb-7" id="letter-title">Para ti, mi amor</h2>
+</div>
+<div class="font-handwriting text-xl md:text-2xl leading-relaxed space-y-5 text-left md:text-center" id="letter-text">
+    <p>Amor,</p>
+    <p>Eres perfecta tal y como eres. Amo tus sonrisas, tus ocurrencias y tus locuras, y quiero que sepas que siempre tendrás mi apoyo para todo… bueno, casi todo (¡no más operaciones, porfa, jajaja!). Ojalá algún día pudieras verte con mis ojos para que dejes de juzgarte tanto y aprendas a amarte tal cual eres.</p>
+    <p>Espero que siempre me acompañes en mis locuras y entrenamientos, y yo siempre acompañarte en tus aventuras viajeras. Me sacas muchísimo de mi zona de confort, jajaja, pero amo que cada salida, cada momento y cada experiencia —a veces raras, a veces súper divertidas— la vivamos juntos.</p>
+    <p class="text-right md:text-center font-bold text-[#740001] pt-2">Con amor, Ramón López</p>
+  </div>
+<div class="sticky bottom-0 z-10 mt-8 pt-4 pb-1 border-t border-[#d4af37]/40 bg-[#ede0c8] flex items-center justify-center">
+<button class="flex items-center gap-2 bg-gradient-to-r from-[#d4af37] via-[#f2ca50] to-[#b8860b] text-[#241a00] font-cinzel font-bold text-sm px-6 py-3 rounded-lg shadow-[0_4px_15px_rgba(212,175,55,0.45)] hover:brightness-110 active:scale-95 transition-all border border-[#ffe088]" id="letter-primary-btn" onclick="closeLoveLetter()">
+<span class="material-symbols-outlined text-lg">auto_awesome</span>
+<span id="letter-primary-label">Entrar al Pensieve</span>
+</button>
+</div>
+</div>
+<div class="h-2 shrink-0 bg-gradient-to-r from-[#8d160e] via-[#d4af37] to-[#8d160e]"></div>
+</div>
+</div>
+<!-- ========================================== -->
 <!-- TOP NAVIGATION BAR (Exact Structure, Warmer Gryffindor / Mahogany Theme) -->
 <!-- ========================================== -->
 <div class="relative z-10 flex h-auto w-full flex-col bg-[#23120e] border-b border-[#d4af37]/30 shadow-[0_4px_25px_rgba(0,0,0,0.6)]">
@@ -520,7 +558,8 @@
 <div class="hidden md:flex items-center gap-7">
 <a class="text-[#ede0c8] text-sm font-cinzel font-semibold hover:text-[#f2ca50] transition-colors" href="javascript:void(0)" onclick="switchToLampView()">Lámpara Profecía</a>
 <a class="text-[#ede0c8] text-sm font-cinzel font-semibold hover:text-[#f2ca50] transition-colors" href="javascript:void(0)" onclick="executePortkeyNav('all')">Galería Pensieve</a>
-<a class="text-[#ede0c8] text-sm font-cinzel font-semibold hover:text-[#f2ca50] transition-colors" href="javascript:void(0)" onclick="openAnniversaryModal()">Bóveda Secreta</a>
+<a class="text-[#ede0c8] text-sm font-cinzel font-semibold hover:text-[#f2ca50] transition-colors" id="vault-nav-link" href="javascript:void(0)" onclick="openAnniversaryModal()"><span id="vault-nav-label">Bóveda Secreta</span></a>
+<a class="hidden text-[#f2ca50] text-sm font-cinzel font-semibold hover:text-white transition-colors" id="letter-nav-link" data-letter-open="true" href="javascript:void(0)" onclick="openLoveLetter('manual')">Carta de Ramón</a>
 </div>
 <div class="flex gap-2.5 shrink-0">
 <button class="flex min-w-[88px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-gradient-to-r from-[#d4af37] to-[#b8860b] text-[#241a00] text-xs font-cinzel font-bold tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-[0_0_15px_rgba(212,175,55,0.35)]" onclick="executePortkeyNav('all')" title="Ir a la galería">
@@ -529,6 +568,11 @@
 <button id="music-toggle-btn" class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 bg-[#3d1512] border border-[#d4af37]/40 text-[#f2ca50] gap-2 text-xs font-bold px-3 hover:bg-[#5a201c] transition-all shadow-sm" onclick="toggleMusicMagic()" title="Reproducir melodía del Pensieve" aria-label="Reproducir melodía del Pensieve" aria-pressed="false">
 <span class="text-[#f2ca50]" data-icon="Champagne">
 <span class="material-symbols-outlined text-lg">music_note</span>
+</span>
+</button>
+<button id="letter-nav-btn" class="hidden flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 bg-[#3d1512] border border-[#d4af37]/40 text-[#f2ca50] gap-2 text-xs font-bold px-3 hover:bg-[#5a201c] transition-all shadow-sm" data-letter-open="true" onclick="openLoveLetter('manual')" title="Carta de Ramón" aria-label="Carta de Ramón">
+<span class="text-[#f2ca50]">
+<span class="material-symbols-outlined text-lg">favorite</span>
 </span>
 </button>
 <button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 bg-[#3d1512] border border-[#d4af37]/40 text-[#f2ca50] gap-2 text-xs font-bold px-3 hover:bg-[#5a201c] transition-all shadow-sm" onclick="executePortkeyNav('random')" title="Girar Brújula Mágica">
@@ -803,6 +847,7 @@
     let orbitStarted = false;
     let scrollLockOwner = null;
     let scrollLockY = 0;
+    let letterOpenedFromUnlock = false;
     let FOLDER_ORDER = ['caracas', 'bogota', 'caripe', 'cumana'];
     let FOLDER_SHORT = { caracas: 'Caracas', bogota: 'Bogotá', caripe: 'Caripe', cumana: 'Cumaná' };
     const FOLDER_ICONS = {
@@ -1271,7 +1316,9 @@
         modal.classList.add('opacity-0', 'pointer-events-none');
         setTimeout(() => modal.classList.add('hidden'), 500);
       }
+      markVaultOpenedUI();
       showSparkleNotification("¡Bóveda Desbloqueada con Éxito!");
+      openLoveLetter('unlock');
     }
 
     function requireVault() {
@@ -1317,6 +1364,13 @@
         });
       }
       if (modal) modal.addEventListener('keydown', trapVaultFocus);
+      const letterModal = document.getElementById('letter-modal');
+      if (letterModal) {
+        letterModal.addEventListener('keydown', trapLoveLetterFocus);
+        letterModal.addEventListener('click', (event) => {
+          if (event.target === letterModal) closeLoveLetter();
+        });
+      }
       focusVaultInput();
     }
 
@@ -1330,6 +1384,73 @@
         modal.classList.remove('opacity-0');
         focusVaultInput();
       }, 10);
+    }
+
+    function markVaultOpenedUI() {
+      const vaultLink = document.getElementById('vault-nav-link');
+      if (vaultLink) {
+        const label = document.getElementById('vault-nav-label');
+        if (label) label.textContent = 'Bóveda abierta';
+        vaultLink.setAttribute('aria-disabled', 'true');
+        vaultLink.setAttribute('tabindex', '-1');
+        vaultLink.setAttribute('title', 'La bóveda ya fue desbloqueada');
+        vaultLink.classList.remove('hover:text-[#f2ca50]');
+        vaultLink.classList.add('pointer-events-none', 'opacity-60', 'cursor-default');
+        vaultLink.onclick = null;
+      }
+      document.querySelectorAll('[data-letter-open]').forEach(element => element.classList.remove('hidden'));
+    }
+
+    function focusLoveLetter() {
+      const modal = document.getElementById('letter-modal');
+      if (!modal) return;
+      const primary = document.getElementById('letter-primary-btn');
+      const target = primary || modal.querySelector('button');
+      if (target) target.focus({ preventScroll: true });
+    }
+
+    function trapLoveLetterFocus(e) {
+      if (e.key !== 'Tab') return;
+      const modal = document.getElementById('letter-modal');
+      if (!modal || modal.classList.contains('hidden')) return;
+      const focusables = Array.from(modal.querySelectorAll('button:not([disabled]), a[href], input'))
+        .filter(element => element.offsetParent !== null);
+      if (!focusables.length) return;
+
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
+    function openLoveLetter(source = 'manual') {
+      if (!requireVault()) return;
+      const modal = document.getElementById('letter-modal');
+      if (!modal || !modal.classList.contains('hidden')) return;
+      letterOpenedFromUnlock = source === 'unlock';
+      const label = document.getElementById('letter-primary-label');
+      if (label) label.textContent = letterOpenedFromUnlock ? 'Entrar al Pensieve' : 'Cerrar carta';
+      lockScroll('letter');
+      modal.classList.remove('hidden', 'pointer-events-none');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        focusLoveLetter();
+      }, 10);
+    }
+
+    function closeLoveLetter() {
+      const modal = document.getElementById('letter-modal');
+      if (!modal || modal.classList.contains('hidden')) return;
+      modal.classList.add('opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        unlockScroll('letter');
+      }, 300);
     }
 
     // 2. Portkey Golden Transition & View Switching
@@ -1552,10 +1673,15 @@
       }, 300);
     }
 
-    // Keyboard support (Escape to close lightbox)
+    // Keyboard support (Escape to close letter or lightbox)
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        closeLightbox();
+        const letterModal = document.getElementById('letter-modal');
+        if (letterModal && !letterModal.classList.contains('hidden')) {
+          closeLoveLetter();
+        } else {
+          closeLightbox();
+        }
       }
     });
 
